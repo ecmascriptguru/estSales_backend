@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDomains extends Migration
+class CreateInitialSamples extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateDomains extends Migration
      */
     public function up()
     {
-        Schema::create('domains', function (Blueprint $table) {
+        Schema::create('initial_samples', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->integer('domain_id')->unsigned();
+            $table->foreign('domain_id')->references('id')->on('domains');
+            $table->integer('bsr')->unique();
+            $table->integer('est');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateDomains extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('domains');
+        Schema::dropIfExists('initial_samples');
     }
 }
