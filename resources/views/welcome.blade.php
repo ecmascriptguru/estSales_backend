@@ -9,27 +9,9 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <!-- Styles -->
         <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
 
             .position-ref {
                 position: relative;
@@ -43,10 +25,6 @@
 
             .content {
                 text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
             }
 
             .links > a {
@@ -76,18 +54,41 @@
                     @endif
                 </div>
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+            <div class="container" style="padding-top: 150px;">
+                <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2>Demo Calculator</h2>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="domain">Please select a domain.</label>
+                                <select name="domain" class="form-control" id="domain">
+                                    <option value="amazon.com.au">amazon.com.au</option>
+                                    <option value="amazon.ca">amazon.ca</option>
+                                    <option value="amazon.com" selected>amazon.com</option>
+                                    <option value="amazon.co.uk">amazon.co.uk</option>
+                                    <option value="amazon.de">amazon.de</option>
+                                    <option value="amazon.es">amazon.es</option>
+                                    <option value="amazon.fr">amazon.fr</option>
+                                    <option value="amazon.in">amazon.in</option>
+                                    <option value="amazon.it">amazon.it</option>
+                                    <option value="amazon.jp">amazon.jp</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="bsr">Best Seller Rank</label>
+                                <input type="number" id="bsr" name="bsr" value="1" min="1" max="1000000" class="form-control">
+                            </div>
+                            <div class="clearfix">
+                                <h4>You can estimate Sales per day with the above best seller rank.</h4>
+                            </div>
+                            <div class="form-group">
+                                <label for="estimation">Unit Sales</label>
+                                <input type="number" name="estimation" id="estimation" class="form-control" disabled>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
