@@ -17,8 +17,8 @@ class CreateInitialSamples extends Migration
             $table->increments('id');
             $table->integer('domain_id')->unsigned();
             $table->foreign('domain_id')->references('id')->on('domains');
-            $table->integer('min')->unique();
-            $table->integer('max')->unique();
+            $table->integer('min');
+            $table->integer('max');
             $table->integer('est');
             $table->timestamps();
         });
