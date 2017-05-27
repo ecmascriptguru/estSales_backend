@@ -10,6 +10,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Styles -->
         <style>
 
@@ -92,5 +93,6 @@
                 </div>
             </div>
         </div>
+        <script src="{{ asset('js/welcome.js') }}"></script>
     </body>
 </html>
