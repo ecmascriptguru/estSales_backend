@@ -177,6 +177,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         *  Voygaer package provider
+         */
+        TCG\Voyager\VoyagerServiceProvider::class,
     ],
 
     /*
