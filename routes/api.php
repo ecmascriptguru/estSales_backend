@@ -20,3 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/register', 'Api\AuthController@signup')->name('api_register');
 
 Route::post('/login', 'Api\AuthController@signin')->name('api_login');
+
+Route::group(['prefix' => 'iSamples', 'middleware' => ['jwt']], function() {
+    Route::post('/', 'Api\InitialSamplesController@index')->name('browse_i_samples');
+});
