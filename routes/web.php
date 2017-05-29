@@ -23,3 +23,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+
+/**
+ *  Front APIs without jwt
+ */
+Route::group(['prefix' => '/api/v1'], function() {
+    Route::post('/get_initial_samples', 'ISamplesController@ajax_samples')->name('front_api_browse_i_samples');
+    Route::group(['prefix' => '/samples'], function() {
+        Route::post('/add', 'Api\v1\SamplesController@add')->name('front_api_add_sample');
+    });
+});

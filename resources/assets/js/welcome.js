@@ -30,10 +30,10 @@ let Calculator = (function() {
         _estimation = 0,
         $_domain = $("#domain"),
         $_bsr = $("#bsr"),
-        apiBaseUrl = null,
         $add_sample = $("#add_sample"),
         $newForm = $("#new-panel"),
         $demo = $("#demo-panel"),
+        token = $("meta[name='csrf-token']")[0].content,
         $_unit_sales = $("#estimation");
 
     let getEstimation = (x1, y1, x2, y2) => {
@@ -66,10 +66,17 @@ let Calculator = (function() {
     }
 
     let getSamples = (domain, success, failure) => {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $.ajax({
             url: _initialSamplesAPIBaseUrl,
             method: "post",
-            data: {domain: domain},
+            data: {
+                domain: domain
+            },
             success: (response) => {
                 if (response.status) {
                     if (typeof success === "function") {
@@ -121,13 +128,20 @@ let SampleForm = (function() {
         $demo = $("#demo-panel"),
         $btnBack = $("#back"),
         $btnSave = $("#save"),
+        addSampleApiUrl = apiBaseUrl + 'samples/add',
         $domain = $("#new_domain"),
         $bsr = $("#new_bsr"),
+        token = $("meta[name='csrf-token']").attr('content'),
         $sales = $("#sales");
 
     let saveSample = (param, callback) => {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $.ajax({
-            url: `${apiBaseUrl}samples/add`,
+            url: addSampleApiUrl,
             method: "post",
             data: param,
             success: (response) => {
@@ -141,6 +155,7 @@ let SampleForm = (function() {
     };
 
     let initEvents = () => {
+
         $btnBack.click(() => {
             $newForm.hide();
             $demo.show();
@@ -154,8 +169,20 @@ let SampleForm = (function() {
             }, (response) => {
                 console.log(response);
             });
-        })
-    }
+        });
+
+        $domain.change((event) => {
+            _domain = event.target.value;
+        });
+
+        $bsr.change((event) => {
+            _bsr = event.target.value;
+        });
+
+        $sales.change((event) => {
+            _sales = event.target.value;
+        });
+    };
     
     let init = () => {
         _domain = $domain.val();

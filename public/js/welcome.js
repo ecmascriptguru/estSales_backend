@@ -759,7 +759,7 @@ var Calculator = function () {
         _bsr = 1,
         _data = [],
         _initialSamplesAPIBaseUrl = apiBaseUrl + "get_initial_samples";
-    _estimation = 0, $_domain = $("#domain"), $_bsr = $("#bsr"), apiBaseUrl = null, $add_sample = $("#add_sample"), $newForm = $("#new-panel"), $demo = $("#demo-panel"), $_unit_sales = $("#estimation");
+    _estimation = 0, $_domain = $("#domain"), $_bsr = $("#bsr"), $add_sample = $("#add_sample"), $newForm = $("#new-panel"), $demo = $("#demo-panel"), token = $("meta[name='csrf-token']")[0].content, $_unit_sales = $("#estimation");
 
     var getEstimation = function getEstimation(x1, y1, x2, y2) {
         var sqrtX1 = Math.sqrt(x1),
@@ -791,10 +791,17 @@ var Calculator = function () {
     };
 
     var getSamples = function getSamples(domain, _success, failure) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $.ajax({
             url: _initialSamplesAPIBaseUrl,
             method: "post",
-            data: { domain: domain },
+            data: {
+                domain: domain
+            },
             success: function success(response) {
                 if (response.status) {
                     if (typeof _success === "function") {
@@ -846,13 +853,20 @@ var SampleForm = function () {
         $demo = $("#demo-panel"),
         $btnBack = $("#back"),
         $btnSave = $("#save"),
+        addSampleApiUrl = apiBaseUrl + 'samples/add',
         $domain = $("#new_domain"),
         $bsr = $("#new_bsr"),
+        token = $("meta[name='csrf-token']").attr('content'),
         $sales = $("#sales");
 
     var saveSample = function saveSample(param, callback) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $.ajax({
-            url: apiBaseUrl + "samples/add",
+            url: addSampleApiUrl,
             method: "post",
             data: param,
             success: function success(response) {
@@ -866,6 +880,7 @@ var SampleForm = function () {
     };
 
     var initEvents = function initEvents() {
+
         $btnBack.click(function () {
             $newForm.hide();
             $demo.show();
@@ -879,6 +894,18 @@ var SampleForm = function () {
             }, function (response) {
                 console.log(response);
             });
+        });
+
+        $domain.change(function (event) {
+            _domain = event.target.value;
+        });
+
+        $bsr.change(function (event) {
+            _bsr = event.target.value;
+        });
+
+        $sales.change(function (event) {
+            _sales = event.target.value;
         });
     };
 
