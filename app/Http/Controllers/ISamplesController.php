@@ -35,6 +35,7 @@ class ISamplesController extends Controller
             ]);
         } else {
             return Response::json([
+                'domain' => $domain->name,
                 'status' => true,
                 'samples' => $domain->initialSamples
             ]);

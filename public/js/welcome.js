@@ -778,9 +778,9 @@ var Calculator = function () {
                 continue;
             } else {
                 if (i == _data.length - 1) {
-                    _estimation = _data[i].estSale;
+                    _estimation = _data[i].est;
                 } else {
-                    var coefficients = getEstimation(_data[i].min, _data[i].estSale, _data[i].max, _data[i + 1].estSale);
+                    var coefficients = getEstimation(_data[i].min, _data[i].est, _data[i].max, _data[i + 1].est);
                     _estimation = coefficients.max - coefficients.alpa * Math.sqrt(_bsr);
                 }
                 break;
@@ -794,7 +794,7 @@ var Calculator = function () {
         $.ajax({
             url: _initialSamplesAPIBaseUrl,
             method: "post",
-            data: JSON.stringify({ domain: domain }),
+            data: { domain: domain },
             success: function success(response) {
                 if (response.status) {
                     if (typeof _success === "function") {
@@ -813,7 +813,10 @@ var Calculator = function () {
             _data = samples;
             $_domain.change(function (event) {
                 _domain = event.target.value;
-                calculate();
+                getSamples(_domain, function (response) {
+                    _data = response;
+                    calculate();
+                });
             });
 
             $_bsr.change(function (event) {

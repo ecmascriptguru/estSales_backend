@@ -50,9 +50,9 @@ let Calculator = (function() {
                 continue;
             } else {
                 if (i == _data.length - 1) {
-                    _estimation = _data[i].estSale;
+                    _estimation = _data[i].est;
                 } else {
-                    let coefficients = getEstimation(_data[i].min, _data[i].estSale, _data[i].max, _data[i + 1].estSale);
+                    let coefficients = getEstimation(_data[i].min, _data[i].est, _data[i].max, _data[i + 1].est);
                     _estimation = coefficients.max - coefficients.alpa * Math.sqrt(_bsr);
                 }
                 break;
@@ -66,7 +66,7 @@ let Calculator = (function() {
         $.ajax({
             url: _initialSamplesAPIBaseUrl,
             method: "post",
-            data: JSON.stringify({domain: domain}),
+            data: {domain: domain},
             success: (response) => {
                 if (response.status) {
                     if (typeof success === "function") {
@@ -85,7 +85,10 @@ let Calculator = (function() {
             _data = samples;
             $_domain.change((event) => {
                 _domain = event.target.value;
-                calculate();
+                getSamples(_domain, (response) => {
+                    _data = response;
+                    calculate();
+                });
             });
 
             $_bsr.change((event) => {
