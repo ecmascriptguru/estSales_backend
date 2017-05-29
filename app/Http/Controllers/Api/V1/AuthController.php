@@ -23,7 +23,9 @@ class AuthController extends Controller
     }
 
     /**
-     * Create session in api side
+     * @resource Session
+     *
+     * Create session after signup via API.
      *
      * @return json object
      */
@@ -45,7 +47,23 @@ class AuthController extends Controller
     }
 
     /**
-     * Create session in api side
+    * Get the validation rules that apply to the request.
+    *
+    * @return array
+    */
+    public function rules()
+    {
+        return [
+            'name' => 'required|unique:posts|max:50',
+            'email' => 'required|unique:posts|max:50',
+            'password' => 'required|unique:posts|max:50',
+        ];
+    }
+
+    /**
+     * @resource Session
+     *
+     * Create session via API.
      *
      * @return json object
      */

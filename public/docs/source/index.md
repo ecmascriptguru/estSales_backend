@@ -37,6 +37,11 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost:8000/api/v1/register",
     "method": "POST",
+    "data": {
+        "name": "your name",
+        "email": "your email address",
+        "password": "your password"
+    },
     "headers": {
         "accept": "application/json"
     }
