@@ -11,4 +11,8 @@ class Domain extends Model
     public function initialSamples() {
         return $this->hasMany('App\InitialSample', 'domain_id');
     }
+
+    public function samples() {
+        return $this->hasMany('App\Sample', 'domain_id');
+    }
 }
