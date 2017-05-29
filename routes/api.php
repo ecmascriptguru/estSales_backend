@@ -26,4 +26,7 @@ Route::post('/v1/login', 'Api\v1\AuthController@signin')->name('api_login');
  */
 Route::group(['prefix' => '/v1', 'middleware' => ['jwt']], function() {
     Route::post('/iSamples', 'Api\v1\InitialSamplesController@index')->name('api_browse_i_samples');
+    Route::group(['prefix' => '/products'], function() {
+        Route::post('/add', 'Api\v1\ProductsController@add')->name('api_add_product');
+    });
 });

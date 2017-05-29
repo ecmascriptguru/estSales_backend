@@ -18,7 +18,6 @@ class SamplesController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('jwt');
     }
 
     /**
