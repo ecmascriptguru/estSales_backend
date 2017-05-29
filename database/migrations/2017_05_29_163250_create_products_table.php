@@ -21,7 +21,6 @@ class CreateProductsTable extends Migration
             $table->foreign('domain_id')->references('id')->on('domains');
             $table->string("asin");
             $table->string('title');
-            $table->primary(['domain_id', 'asin']);
             $table->timestamps();
         });
     }
