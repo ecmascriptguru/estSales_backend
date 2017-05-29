@@ -186,6 +186,12 @@ return [
          *  Tymon/jwt-auth
          */
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+
+
+        /**
+         *  API Doc Generator
+         */
+        Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
     ],
 
     /*

@@ -749,9 +749,9 @@ var env = "dev";
 // let env = "staging";
 var apiBaseUrl = null;
 if (env === "dev") {
-    apiBaseUrl = "http://localhost:8000/api/";
+    apiBaseUrl = "http://localhost:8000/api/v1/";
 } else {
-    apiBaseUrl = "http://example.com/api/";
+    apiBaseUrl = "http://example.com/api/v1/";
 }
 
 var Calculator = function () {
