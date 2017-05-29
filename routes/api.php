@@ -24,3 +24,4 @@ Route::post('/login', 'Api\AuthController@signin')->name('api_login');
 Route::group(['prefix' => 'iSamples', 'middleware' => ['jwt']], function() {
     Route::post('/', 'Api\InitialSamplesController@index')->name('browse_i_samples');
 });
+Route::post('/get_initial_samples', 'ISamplesController@ajax_samples')->name('front_api_samples');
