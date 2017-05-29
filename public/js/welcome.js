@@ -759,7 +759,7 @@ var Calculator = function () {
         _bsr = 1,
         _data = [],
         _initialSamplesAPIBaseUrl = apiBaseUrl + "get_initial_samples";
-    _estimation = 0, $_domain = $("#domain"), $_bsr = $("#bsr"), apiBaseUrl = null, $_unit_sales = $("#estimation");
+    _estimation = 0, $_domain = $("#domain"), $_bsr = $("#bsr"), apiBaseUrl = null, $add_sample = $("#add_sample"), $newForm = $("#new-panel"), $demo = $("#demo-panel"), $_unit_sales = $("#estimation");
 
     var getEstimation = function getEstimation(x1, y1, x2, y2) {
         var sqrtX1 = Math.sqrt(x1),
@@ -824,6 +824,11 @@ var Calculator = function () {
                 calculate();
             });
 
+            $add_sample.click(function () {
+                $demo.hide();
+                $newForm.show();
+            });
+
             calculate();
         });
     };
@@ -833,8 +838,66 @@ var Calculator = function () {
     };
 }();
 
+var SampleForm = function () {
+    var _domain = null,
+        _bsr = null,
+        _sales = null,
+        $newForm = $("#new-panel"),
+        $demo = $("#demo-panel"),
+        $btnBack = $("#back"),
+        $btnSave = $("#save"),
+        $domain = $("#new_domain"),
+        $bsr = $("#new_bsr"),
+        $sales = $("#sales");
+
+    var saveSample = function saveSample(param, callback) {
+        $.ajax({
+            url: apiBaseUrl + "samples/add",
+            method: "post",
+            data: param,
+            success: function success(response) {
+                if (response.status) {
+                    if (typeof callback == "function") {
+                        callback(response);
+                    }
+                }
+            }
+        });
+    };
+
+    var initEvents = function initEvents() {
+        $btnBack.click(function () {
+            $newForm.hide();
+            $demo.show();
+        });
+
+        $btnSave.click(function () {
+            saveSample({
+                domain: _domain,
+                bsr: _bsr,
+                sales: _sales
+            }, function (response) {
+                console.log(response);
+            });
+        });
+    };
+
+    var init = function init() {
+        _domain = $domain.val();
+        _bsr = parseInt($bsr.val());
+        _sales = parseInt($sales.val());
+
+        initEvents();
+    };
+
+    return {
+        init: init
+    };
+}();
+
 (function () {
     Calculator.init();
+    SampleForm.init();
 })();
 
 /***/ }),

@@ -31,6 +31,9 @@ let Calculator = (function() {
         $_domain = $("#domain"),
         $_bsr = $("#bsr"),
         apiBaseUrl = null,
+        $add_sample = $("#add_sample"),
+        $newForm = $("#new-panel"),
+        $demo = $("#demo-panel"),
         $_unit_sales = $("#estimation");
 
     let getEstimation = (x1, y1, x2, y2) => {
@@ -96,6 +99,11 @@ let Calculator = (function() {
                 calculate();
             });
 
+            $add_sample.click(() => {
+                $demo.hide();
+                $newForm.show();
+            });
+
             calculate();
         })
     }
@@ -105,6 +113,64 @@ let Calculator = (function() {
     }
 })();
 
+let SampleForm = (function() {
+    let _domain = null,
+        _bsr = null,
+        _sales = null,
+        $newForm = $("#new-panel"),
+        $demo = $("#demo-panel"),
+        $btnBack = $("#back"),
+        $btnSave = $("#save"),
+        $domain = $("#new_domain"),
+        $bsr = $("#new_bsr"),
+        $sales = $("#sales");
+
+    let saveSample = (param, callback) => {
+        $.ajax({
+            url: `${apiBaseUrl}samples/add`,
+            method: "post",
+            data: param,
+            success: (response) => {
+                if (response.status) {
+                    if (typeof callback == "function") {
+                        callback(response);
+                    }
+                }
+            }
+        })
+    };
+
+    let initEvents = () => {
+        $btnBack.click(() => {
+            $newForm.hide();
+            $demo.show();
+        });
+
+        $btnSave.click(() => {
+            saveSample({
+                domain: _domain,
+                bsr: _bsr,
+                sales: _sales
+            }, (response) => {
+                console.log(response);
+            });
+        })
+    }
+    
+    let init = () => {
+        _domain = $domain.val();
+        _bsr = parseInt($bsr.val());
+        _sales = parseInt($sales.val());
+
+        initEvents();
+    };
+
+    return {
+        init: init
+    };
+})();
+
 (function() {
     Calculator.init();
+    SampleForm.init();
 })();
