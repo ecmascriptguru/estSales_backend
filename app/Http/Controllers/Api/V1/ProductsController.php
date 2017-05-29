@@ -35,7 +35,12 @@ class ProductsController extends Controller
         $domain = Domain::firstOrCreate(['name' => $domain]);
 
         $productParams = $request->only('title', 'asin');
-        $product = Product::firstOrCreate($productParams);
+        $product = Product::firstOrNew([
+            'domain_id' => $domain->id,
+            'asin' => $request->input('asin')
+        ]);
+        $product->title = $request->input('title');
+        $product->save();
 
         $history = new ProductHistory;
         $history->product_id=  $product->id;
