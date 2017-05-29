@@ -15,4 +15,8 @@ class Product extends Model
     public function histories() {
         return $this->hasMany('App\ProductHistory', 'product_id');
     }
+
+    public function items() {
+        return $this->hasMany('App\Item', 'product_id');
+    }
 }
