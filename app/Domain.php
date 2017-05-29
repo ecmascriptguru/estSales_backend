@@ -15,4 +15,8 @@ class Domain extends Model
     public function samples() {
         return $this->hasMany('App\Sample', 'domain_id');
     }
+
+    public function products() {
+        return $this->hasMany('App\Product', 'domain_id');
+    }
 }
