@@ -13,13 +13,13 @@ let domains = [
         "amazon.jp"
     ];
 
-let env = "dev";
-// let env = "staging";
+// let env = "dev";
+let env = "staging";
 let apiBaseUrl = null;
 if (env === "dev") {
     apiBaseUrl = "http://localhost:8000/api/v1/";
 } else {
-    apiBaseUrl = "http://example.com/api/v1/";
+    apiBaseUrl = "http://52.55.224.191/api/v1/";
 }
 
 let Calculator = (function() {
