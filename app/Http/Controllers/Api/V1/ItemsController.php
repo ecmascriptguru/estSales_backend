@@ -98,7 +98,7 @@ class ItemsController extends Controller
         if ($history->save() && $item->save()) {
             return Response::json([
                 'status' => true,
-                'id' => $history->id
+                'id' => $item->id
             ]);
         } else {
             return Response::json([

@@ -44,6 +44,7 @@ class ProductsController extends Controller
             'domain_id' => $domain->id,
             'asin' => $request->input('asin')
         ]);
+        $product->category_id = $category->id;
         $product->title = $request->input('title');
         $product->save();
 
@@ -57,12 +58,12 @@ class ProductsController extends Controller
         if ($history->save()) {
             return Response::json([
                 'status' => true,
-                'id' => $history->id
+                'id' => $product->id
             ]);
         } else {
             return Response::json([
                 'status' => false,
-                'msg' => "Error occured in SQL."
+                'msg' => "An error occured in SQL."
             ]);
         }
     }

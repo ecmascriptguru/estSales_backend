@@ -412,18 +412,30 @@ This api will be called in chrome extension to add a new product into a sample d
 
 ```javascript
 var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/products/add",
     "method": "POST",
-    "headers": {
-        "accept": "application/json"
+    "data": {
+        "token": "eyJ0e..UzI1NiJ9.eyJzdWI...lJQeGMifQ.-kmnsi_ts..RHoUYohY",
+        "domain": "amazon.com",
+        "title": "First & Last",
+        "asin": "DFDJEPOPEGSLDKFJ",
+        "bsr": 25468,
+        "currency": "USD",
+        "price": 124.99,
+        "est": 235,
+        "caption": "My first product to be tracked."
     }
 }
 
 $.ajax(settings).done(function (response) {
     console.log(response);
 });
+
+//  Response
+{
+    "status":true,
+    "id":3
+}
 ```
 
 
@@ -444,18 +456,26 @@ This api will be called in landing page.
 
 ```javascript
 var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/samples/add",
     "method": "POST",
+    "data": {
+        "domain": "amazon.co.uk",
+        "bsr": 5315,
+        "sales": 235
+    },
     "headers": {
-        "accept": "application/json"
+        "X-CSRF-TOKEN" : "5uxja9mQt1ln6BWY0IF5YYE1rllrT356XUXWYIIS"
     }
 }
 
 $.ajax(settings).done(function (response) {
     console.log(response);
 });
+
+//  Response
+{
+    "status":true,"id":5
+}
 ```
 
 
