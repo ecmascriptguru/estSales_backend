@@ -9,7 +9,7 @@ includes:
 search: true
 
 toc_footers:
-- <a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a>
+- <a href=''>Documentation Powered by Alexis</a>
 ---
 <!-- START_INFO -->
 
@@ -50,6 +50,11 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost:8000/api/v1/register",
     "method": "POST",
+    "data": {
+        "name": "Test user",
+        "email": "test@test.com",
+        "password": "password"
+    },
     "headers": {
         "accept": "application/json"
     }
@@ -58,8 +63,19 @@ var settings = {
 $.ajax(settings).done(function (response) {
     console.log(response);
 });
+//  Response
+{
+    "status": true,
+    "token": "eyJ0eX...iJIUzI1NiJ9.eyJ...ZEaUEzVjMifQ.ZulM...tHK2ohE",
+    "user": {
+        "name": "Test user",
+        "email": "test@test.com",
+        "updated_at": "2017-05-30 08:25:58",
+        "created_at": "2017-05-30 08:25:58",
+        "id": 3
+    }
+}
 ```
-
 
 ### HTTP Request
 `POST api/v1/register`
@@ -79,6 +95,10 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost:8000/api/v1/login",
     "method": "POST",
+    "data": {
+        "email": "test@test.com",
+        "password": "password"
+    },
     "headers": {
         "accept": "application/json"
     }
@@ -87,6 +107,19 @@ var settings = {
 $.ajax(settings).done(function (response) {
     console.log(response);
 });
+
+// Response
+{
+    "status": true,
+    "token": "eyJ0e...zI1NiJ9.eyJzdWIiOjMsIml...EaUEzVjMifQ.Zul...5knE-ItHK2ohE",
+    "user": {
+        "name": "Test user",
+        "email": "test@test.com",
+        "updated_at": "2017-05-30 08:25:58",
+        "created_at": "2017-05-30 08:25:58",
+        "id": 3
+    }
+}
 ```
 
 

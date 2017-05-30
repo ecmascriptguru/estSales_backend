@@ -9,7 +9,7 @@ use App\Domain;
 
 /**
  *  @resource Initial Sample : Frontend
- *  This will be used in front end page and API side. But don't forget to pass xsrf-token because this will be used in origin.
+ *  This will be used in front end page and API side. But don't forget to pass xsrf-token because this will be used in front end side.
  */
 class ISamplesController extends Controller
 {

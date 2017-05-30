@@ -21,11 +21,11 @@
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="docs/images/navbar.png" />
+        <img src="images/navbar.png" />
       </span>
     </a>
     <div class="tocify-wrapper">
-        <img src="docs/images/logo.png" />
+        <img src="images/logo.png" />
                     <div class="lang-selector">
                                   <a href="#" data-language-name="javascript">javascript</a>
                             </div>
@@ -36,7 +36,7 @@
               <div id="toc">
       </div>
                     <ul class="toc-footer">
-                                  <li><a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a></li>
+                                  <li><a href=''>Documentation Powered by Alexis</a></li>
                             </ul>
             </div>
     <div class="page-wrapper">
@@ -59,6 +59,11 @@
     "crossDomain": true,
     "url": "http://localhost:8000/api/v1/register",
     "method": "POST",
+    "data": {
+        "name": "Test user",
+        "email": "test@test.com",
+        "password": "password"
+    },
     "headers": {
         "accept": "application/json"
     }
@@ -66,7 +71,19 @@
 
 $.ajax(settings).done(function (response) {
     console.log(response);
-});</code></pre>
+});
+//  Response
+{
+    "status": true,
+    "token": "eyJ0eX...iJIUzI1NiJ9.eyJ...ZEaUEzVjMifQ.ZulM...tHK2ohE",
+    "user": {
+        "name": "Test user",
+        "email": "test@test.com",
+        "updated_at": "2017-05-30 08:25:58",
+        "created_at": "2017-05-30 08:25:58",
+        "id": 3
+    }
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/v1/register</code></p>
 <!-- END_8ae5d428da27b2b014dc767c2f19a813 -->
@@ -81,6 +98,10 @@ $.ajax(settings).done(function (response) {
     "crossDomain": true,
     "url": "http://localhost:8000/api/v1/login",
     "method": "POST",
+    "data": {
+        "email": "test@test.com",
+        "password": "password"
+    },
     "headers": {
         "accept": "application/json"
     }
@@ -88,7 +109,20 @@ $.ajax(settings).done(function (response) {
 
 $.ajax(settings).done(function (response) {
     console.log(response);
-});</code></pre>
+});
+
+// Response
+{
+    "status": true,
+    "token": "eyJ0e...zI1NiJ9.eyJzdWIiOjMsIml...EaUEzVjMifQ.Zul...5knE-ItHK2ohE",
+    "user": {
+        "name": "Test user",
+        "email": "test@test.com",
+        "updated_at": "2017-05-30 08:25:58",
+        "created_at": "2017-05-30 08:25:58",
+        "id": 3
+    }
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/v1/login</code></p>
 <!-- END_8c0e48cd8efa861b308fc45872ff0837 -->
