@@ -234,8 +234,6 @@ This api will be called in chrome extension to get all of products tracked by au
 
 ```javascript
 var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "api/v1/items/",
     "data": {
         "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTQ5NjEzNzIxNCwiZXhwIjoxNDk2MTQwODE0LCJuYmYiOjE0OTYxMzcyMTQsImp0aSI6IjVJUnRqT2JlOFY2clJQeGMifQ.-kmnsi_tsrv7JJU9gKwyWEjJvB_DpR4052lRHoUYohY"
@@ -253,7 +251,17 @@ $.ajax(settings).done(function (response) {
 //  Response
 {
     "status":true,
-    "items":[]
+    "items":[
+        {
+            "id":1,
+            "product_id":1,
+            "tracked_by":5,
+            "caption":"your caption",
+            "status":1,
+            "created_at":"2017-05-30 09:58:25",
+            "updated_at":"2017-05-30 09:58:25"
+        }
+    ]
 }
 ```
 
@@ -272,8 +280,6 @@ This api will be called in chrome extension to get a specific product with chang
 
 ```javascript
 var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/items/get",
     "method": "POST",
     "headers": {

@@ -161,10 +161,12 @@ $.ajax(settings).done(function (response) {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/iSamples",
     "method": "POST",
+    "data": {
+        "token": "eyJ0eX..1NiJ9.eyJzdWIi...lJQeGMifQ.-kmnsi_tsr...RHoUYohY",
+        "domain": "amazon.co.uk"
+    },
     "headers": {
         "accept": "application/json"
     }
@@ -177,7 +179,7 @@ $.ajax(settings).done(function (response) {
 //  Response
 {
     "status":true,
-    "domain":"amazon.com",
+    "domain":"amazon.co.uk",
     "samples":[
         {
             "id":65,
@@ -215,10 +217,9 @@ $.ajax(settings).done(function (response) {
 <pre><code class="language-javascript">var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "api/v1/iSamples",
+    "url": "api/v1/items/",
     "data": {
-        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTQ5NjEzNzIxNCwiZXhwIjoxNDk2MTQwODE0LCJuYmYiOjE0OTYxMzcyMTQsImp0aSI6IjVJUnRqT2JlOFY2clJQeGMifQ.-kmnsi_tsrv7JJU9gKwyWEjJvB_DpR4052lRHoUYohY",
-        "domain": "amazon.co.uk"
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTQ5NjEzNzIxNCwiZXhwIjoxNDk2MTQwODE0LCJuYmYiOjE0OTYxMzcyMTQsImp0aSI6IjVJUnRqT2JlOFY2clJQeGMifQ.-kmnsi_tsrv7JJU9gKwyWEjJvB_DpR4052lRHoUYohY"
     },
     "method": "POST",
     "headers": {
@@ -228,7 +229,13 @@ $.ajax(settings).done(function (response) {
 
 $.ajax(settings).done(function (response) {
     console.log(response);
-});</code></pre>
+});
+
+//  Response
+{
+    "status":true,
+    "items":[]
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/v1/items</code></p>
 <!-- END_7bd5f07d9ba801bd8687585c8cb91196 -->
@@ -261,12 +268,18 @@ $.ajax(settings).done(function (response) {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/items/new",
     "method": "POST",
-    "headers": {
-        "accept": "application/json"
+    "data": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTQ5NjEzNzIxNCwiZXhwIjoxNDk2MTQwODE0LCJuYmYiOjE0OTYxMzcyMTQsImp0aSI6IjVJUnRqT2JlOFY2clJQeGMifQ.-kmnsi_tsrv7JJU9gKwyWEjJvB_DpR4052lRHoUYohY",
+        "domain": "amazon.com",
+        "title": "First &amp; Last",
+        "asin": "DFDJEPOPEGSLDKFJ",
+        "bsr": 25468,
+        "currency": "USD",
+        "price": 124.99,
+        "est": 235,
+        "caption": "My first product to be tracked."
     }
 }
 

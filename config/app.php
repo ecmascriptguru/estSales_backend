@@ -192,6 +192,11 @@ return [
          *  API Doc Generator
          */
         Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
+
+        /**
+         *  Use CORS 
+         */
+        Barryvdh\Cors\ServiceProvider::class,
     ],
 
     /*
