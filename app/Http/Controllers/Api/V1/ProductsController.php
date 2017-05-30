@@ -11,6 +11,11 @@ use App\Product;
 use App\Domain;
 use App\ProductHistory;
 
+/**
+ * @resource Product
+ * This api will be called in chrome extension to manage Products. Middelware : JWT Authentication
+ * Also this will be used to building corpus for machine learning.
+ */
 class ProductsController extends Controller
 {
     /**
@@ -23,8 +28,8 @@ class ProductsController extends Controller
     }
 
     /**
-     *  @resource Products
-     *  Add a new product
+     * Add new product API
+     * This api will be called in chrome extension to add a new product into a sample data source for machine learning.
      */
     public function add(Request $request) {
         $domain = $request->input('domain');

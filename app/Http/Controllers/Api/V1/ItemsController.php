@@ -13,6 +13,10 @@ use App\ProductHistory;
 use App\Item;
 use App\User;
 
+/**
+ * @resource Item (Products to be tracked.)
+ * This api will be called in chrome extension to manage tracking. Middelware : JWT Authentication
+ */
 class ItemsController extends Controller
 {
     /**
@@ -25,8 +29,8 @@ class ItemsController extends Controller
     }
 
     /**
-     *  @resource Items
-     *  Get saved items(products) being tracked by specific(authorized) user.
+     * Watched Products Browsing API
+     * This api will be called in chrome extension to get all of products tracked by authorized user.
      */
     public function index(Request $request) {
         $user = $request->input('user');
@@ -40,8 +44,8 @@ class ItemsController extends Controller
 
 
     /**
-     *  @resource Items
-     *  
+     * Watched Product Detail API
+     * This api will be called in chrome extension to get a specific product with change histories being tracked by the authorized user.
      */
     public function get(Request $request) {
         $item_id = $request->input('id');
@@ -56,8 +60,8 @@ class ItemsController extends Controller
 
 
     /**
-     * @resource Items
-     *
+     * Product watch API
+     * This api will be called in chrome extension to track a new product by the authorized user.
      */
     public function add(Request $request) {
         $user = $request->input('user');
@@ -103,8 +107,8 @@ class ItemsController extends Controller
     }
 
     /**
-     *  @resources Item
-     *
+     *  Product unwatch API
+     *  This api will be called in chrome extension in case of that the authenticated user doesn't need to track the product any more.
      */
     public function del(Request $request) {
         $user = $request->input('user');

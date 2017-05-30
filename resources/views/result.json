@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Test user",
+        "email": "test@test.com",
+        "password": "password"
+    },
+
+    {
+        "status": true,
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL3YxXC9yZWdpc3RlciIsImlhdCI6MTQ5NjEzMjc1OCwiZXhwIjoxNDk2MTM2MzU4LCJuYmYiOjE0OTYxMzI3NTgsImp0aSI6IjFTSzZhRVJzQ3ZEaUEzVjMifQ.ZulMTQ-Jr6aRBoXaNZvZHfytrx1DwV5knE-ItHK2ohE",
+        "user": {
+            "name": "Test user",
+            "email": "test@test.com",
+            "updated_at": "2017-05-30 08:25:58",
+            "created_at": "2017-05-30 08:25:58",
+            "id": 3
+        }
+    },
+
+    {
+        "email": "test@test.com",
+        "password": "password"
+    },
+
+    {
+        "status": true,
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL3YxXC9yZWdpc3RlciIsImlhdCI6MTQ5NjEzMjc1OCwiZXhwIjoxNDk2MTM2MzU4LCJuYmYiOjE0OTYxMzI3NTgsImp0aSI6IjFTSzZhRVJzQ3ZEaUEzVjMifQ.ZulMTQ-Jr6aRBoXaNZvZHfytrx1DwV5knE-ItHK2ohE",
+        "user": {
+            "name": "Test user",
+            "email": "test@test.com",
+            "updated_at": "2017-05-30 08:25:58",
+            "created_at": "2017-05-30 08:25:58",
+            "id": 3
+        }
+    }
+
+]

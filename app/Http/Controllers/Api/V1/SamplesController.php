@@ -9,6 +9,11 @@ use Response;
 use App\Domain;
 use App\Sample;
 
+/**
+ * @resource Sample
+ * This api will be called in landing page to store new samples given by customers. Middelware : CSRF Token Verification
+ * Also this will be used to building corpus for machine learning.
+ */
 class SamplesController extends Controller
 {
     /**
@@ -21,7 +26,8 @@ class SamplesController extends Controller
     }
 
     /**
-     * @resource Samples
+     * Add new Sample API
+     * This api will be called in landing page.
      */
     public function add(Request $request) {
         $domain = $request->input('domain');

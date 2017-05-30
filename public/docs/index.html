@@ -48,9 +48,11 @@
 <p>Welcome to the generated API reference.
 <a href="http://localhost:8000/docs/collection.json">Get Postman Collection</a></p>
 <!-- END_INFO -->
-<h1>general</h1>
+<h1>Authentication</h1>
+<p>This api will be used in chrome extension in guest mode.</p>
 <!-- START_8ae5d428da27b2b014dc767c2f19a813 -->
-<h2>Create session in api side</h2>
+<h2>User Registration API</h2>
+<p>This api will be used in chrome extension as registration wizard.</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -61,11 +63,6 @@
     "crossDomain": true,
     "url": "http://localhost:8000/api/v1/register",
     "method": "POST",
-    "data": {
-        "name": "your name",
-        "email": "your email address",
-        "password": "your password"
-    },
     "headers": {
         "accept": "application/json"
     }
@@ -78,7 +75,8 @@ $.ajax(settings).done(function (response) {
 <p><code>POST api/v1/register</code></p>
 <!-- END_8ae5d428da27b2b014dc767c2f19a813 -->
 <!-- START_8c0e48cd8efa861b308fc45872ff0837 -->
-<h2>Create session in api side</h2>
+<h2>User Login API</h2>
+<p>This api will be used in chrome extension as Login wizard.</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -100,31 +98,11 @@ $.ajax(settings).done(function (response) {
 <h3>HTTP Request</h3>
 <p><code>POST api/v1/login</code></p>
 <!-- END_8c0e48cd8efa861b308fc45872ff0837 -->
-<!-- START_2234554103caf8623899f56e9a432795 -->
-<h2>api/v1/iSamples</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/iSamples" \
--H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost:8000/api/v1/iSamples",
-    "method": "POST",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});</code></pre>
-<h3>HTTP Request</h3>
-<p><code>POST api/v1/iSamples</code></p>
-<!-- END_2234554103caf8623899f56e9a432795 -->
+<h1>Initial Sample : Frontend</h1>
+<p>This will be used in front end page and API side. But don&#039;t forget to pass xsrf-token because this will be used in origin.</p>
 <!-- START_d6a72841e3e6bb628c4b63c18da6ed04 -->
-<h2>api/v1/get_initial_samples</h2>
+<h2>Front end API to get Initial sample data.</h2>
+<p>This api is used to get initial samples stored in database according to selected domain. Also this data will be used in computing coefficients to calculate Unit Sales Estimation based on Best seller rank.</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -146,6 +124,184 @@ $.ajax(settings).done(function (response) {
 <h3>HTTP Request</h3>
 <p><code>POST api/v1/get_initial_samples</code></p>
 <!-- END_d6a72841e3e6bb628c4b63c18da6ed04 -->
+<h1>InitialSample</h1>
+<p>This api will be used in chrome extension to manage initial data. Middelware : JWT Authentication</p>
+<!-- START_2234554103caf8623899f56e9a432795 -->
+<h2>Initial Sample Data Browsing API</h2>
+<p>This api will be called in chrome extension to get initial sample data to be used in coefficients correction.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/iSamples" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost:8000/api/v1/iSamples",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/iSamples</code></p>
+<!-- END_2234554103caf8623899f56e9a432795 -->
+<h1>Item (Products to be tracked.)</h1>
+<p>This api will be called in chrome extension to manage tracking. Middelware : JWT Authentication</p>
+<!-- START_7bd5f07d9ba801bd8687585c8cb91196 -->
+<h2>Watched Products Browsing API</h2>
+<p>This api will be called in chrome extension to get all of products tracked by authorized user.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/items" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost:8000/api/v1/items",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/items</code></p>
+<!-- END_7bd5f07d9ba801bd8687585c8cb91196 -->
+<!-- START_f23222161d4405120d2d6a4c70a300f9 -->
+<h2>Watched Product Detail API</h2>
+<p>This api will be called in chrome extension to get a specific product with change histories being tracked by the authorized user.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/items/get" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost:8000/api/v1/items/get",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/items/get</code></p>
+<!-- END_f23222161d4405120d2d6a4c70a300f9 -->
+<!-- START_d5d6ad70f971a5fda06bb1ecda8be70e -->
+<h2>Product watch API</h2>
+<p>This api will be called in chrome extension to track a new product by the authorized user.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/items/new" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost:8000/api/v1/items/new",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/items/new</code></p>
+<!-- END_d5d6ad70f971a5fda06bb1ecda8be70e -->
+<!-- START_3bdf32c97cbef9dbea04cdc9914152db -->
+<h2>Product unwatch API</h2>
+<p>This api will be called in chrome extension in case of that the authenticated user doesn&#039;t need to track the product any more.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/items/del" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost:8000/api/v1/items/del",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/items/del</code></p>
+<!-- END_3bdf32c97cbef9dbea04cdc9914152db -->
+<h1>Product</h1>
+<p>This api will be called in chrome extension to manage Products. Middelware : JWT Authentication
+Also this will be used to building corpus for machine learning.</p>
+<!-- START_949df4027127e587b7550201c3bdc7ab -->
+<h2>Add new product API</h2>
+<p>This api will be called in chrome extension to add a new product into a sample data source for machine learning.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/products/add" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost:8000/api/v1/products/add",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/products/add</code></p>
+<!-- END_949df4027127e587b7550201c3bdc7ab -->
+<h1>Sample</h1>
+<p>This api will be called in landing page to store new samples given by customers. Middelware : CSRF Token Verification
+Also this will be used to building corpus for machine learning.</p>
+<!-- START_22ceebf47ac9c808e6a516d023977f83 -->
+<h2>Add new Sample API</h2>
+<p>This api will be called in landing page.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/samples/add" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost:8000/api/v1/samples/add",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/samples/add</code></p>
+<!-- END_22ceebf47ac9c808e6a516d023977f83 -->
       </div>
       <div class="dark-box">
                         <div class="lang-selector">

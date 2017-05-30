@@ -7,6 +7,10 @@ use Response;
 
 use App\Domain;
 
+/**
+ *  @resource Initial Sample : Frontend
+ *  This will be used in front end page and API side. But don't forget to pass xsrf-token because this will be used in origin.
+ */
 class ISamplesController extends Controller
 {
     /**
@@ -19,6 +23,11 @@ class ISamplesController extends Controller
         $this->middleware('auth')->except('ajax_samples');
     }
 
+    /**
+     * Front end API to get Initial sample data.
+     *
+     * This api is used to get initial samples stored in database according to selected domain. Also this data will be used in computing coefficients to calculate Unit Sales Estimation based on Best seller rank.
+     */
     public function ajax_samples(Request $request) {
         $domain = $request->input('domain');
 

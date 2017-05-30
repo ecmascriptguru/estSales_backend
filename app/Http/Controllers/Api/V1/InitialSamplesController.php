@@ -8,6 +8,10 @@ use App\Http\Controllers\Controller;
 
 use App\Domain;
 
+/**
+ * @resource InitialSample
+ * This api will be used in chrome extension to manage initial data. Middelware : JWT Authentication
+ */
 class InitialSamplesController extends Controller
 {
     /**
@@ -19,7 +23,10 @@ class InitialSamplesController extends Controller
     {
     }
 
-
+    /**
+     * Initial Sample Data Browsing API
+     * This api will be called in chrome extension to get initial sample data to be used in coefficients correction.
+     */
     public function index(Request $request) {
         $domain = $request->input('domain');
 
