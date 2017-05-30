@@ -37,4 +37,4 @@ Route::group(['prefix' => '/v1', 'middleware' => ['jwt']], function() {
         Route::post('/new', 'Api\V1\ItemsController@add')->name('api_new_item');
         Route::post('/del', 'Api\V1\ItemsController@del')->name('api_delete_item');
     });
-});
+}); 
