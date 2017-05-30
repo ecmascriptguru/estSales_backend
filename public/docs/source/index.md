@@ -140,12 +140,14 @@ This api is used to get initial samples stored in database according to selected
 
 ```javascript
 var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/get_initial_samples",
     "method": "POST",
+    "data": {
+        "domain" : "amazon.com",
+    },
     "headers": {
-        "accept": "application/json"
+        "accept": "application/json",
+        "X-CSRF-TOKEN" : "Xg0aM3nvMdYylo8PlPZJR9vRLShuQ91XNBVBTvWS"
     }
 }
 
@@ -171,10 +173,12 @@ This api will be called in chrome extension to get initial sample data to be use
 
 ```javascript
 var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/iSamples",
     "method": "POST",
+    "data": {
+        "token": "eyJ0eX..1NiJ9.eyJzdWIi...lJQeGMifQ.-kmnsi_tsr...RHoUYohY",
+        "domain": "amazon.co.uk"
+    },
     "headers": {
         "accept": "application/json"
     }
@@ -183,6 +187,34 @@ var settings = {
 $.ajax(settings).done(function (response) {
     console.log(response);
 });
+
+//  Response
+{
+    "status":true,
+    "domain":"amazon.co.uk",
+    "samples":[
+        {
+            "id":65,
+            "domain_id":3,
+            "min":1,
+            "max":5,
+            "est":60000,
+            "created_at":"2017-05-27 17:22:00",
+            "updated_at":"2017-05-27 17:22:00"
+        },
+        {
+            "id":66,
+            "domain_id":3,
+            "min":6,
+            "max":10,
+            "est":52500,
+            "created_at":"2017-05-27 17:22:00",
+            "updated_at":"2017-05-27 17:22:00"
+        },{
+            //...
+        }
+    ]
+}
 ```
 
 
@@ -204,7 +236,10 @@ This api will be called in chrome extension to get all of products tracked by au
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost:8000/api/v1/items",
+    "url": "api/v1/items/",
+    "data": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTQ5NjEzNzIxNCwiZXhwIjoxNDk2MTQwODE0LCJuYmYiOjE0OTYxMzcyMTQsImp0aSI6IjVJUnRqT2JlOFY2clJQeGMifQ.-kmnsi_tsrv7JJU9gKwyWEjJvB_DpR4052lRHoUYohY"
+    },
     "method": "POST",
     "headers": {
         "accept": "application/json"
@@ -214,6 +249,12 @@ var settings = {
 $.ajax(settings).done(function (response) {
     console.log(response);
 });
+
+//  Response
+{
+    "status":true,
+    "items":[]
+}
 ```
 
 
@@ -260,12 +301,18 @@ This api will be called in chrome extension to track a new product by the author
 
 ```javascript
 var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/items/new",
     "method": "POST",
-    "headers": {
-        "accept": "application/json"
+    "data": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTQ5NjEzNzIxNCwiZXhwIjoxNDk2MTQwODE0LCJuYmYiOjE0OTYxMzcyMTQsImp0aSI6IjVJUnRqT2JlOFY2clJQeGMifQ.-kmnsi_tsrv7JJU9gKwyWEjJvB_DpR4052lRHoUYohY",
+        "domain": "amazon.com",
+        "title": "First & Last",
+        "asin": "DFDJEPOPEGSLDKFJ",
+        "bsr": 25468,
+        "currency": "USD",
+        "price": 124.99,
+        "est": 235,
+        "caption": "My first product to be tracked."
     }
 }
 

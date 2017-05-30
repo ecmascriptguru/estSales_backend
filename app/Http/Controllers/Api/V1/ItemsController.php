@@ -77,6 +77,7 @@ class ItemsController extends Controller
             'domain_id' => $domain->id,
             'asin' => $request->input('asin')
         ]);
+        $product->category_id = $category->id;
         $product->title = $request->input('title');
         $product->save();
 
