@@ -13,8 +13,8 @@ let domains = [
         "amazon.jp"
     ];
 
-let env = "dev";
-// let env = "staging";
+// let env = "dev";
+let env = "staging";
 let apiBaseUrl = null;
 if (env === "dev") {
     apiBaseUrl = "http://localhost:8000/api/v1/";

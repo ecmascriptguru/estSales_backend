@@ -745,8 +745,8 @@ __webpack_require__(27);
 
 var domains = ["amazon.com", "amazon.ca", "amazon.com.au", "amazon.co.uk", "amazon.de", "amazon.es", "amazon.fr", "amazon.in", "amazon.it", "amazon.jp"];
 
-var env = "dev";
-// let env = "staging";
+// let env = "dev";
+var env = "staging";
 var apiBaseUrl = null;
 if (env === "dev") {
     apiBaseUrl = "http://localhost:8000/api/v1/";
