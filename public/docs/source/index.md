@@ -2,7 +2,6 @@
 title: API Reference
 
 language_tabs:
-- bash
 - javascript
 
 includes:
@@ -22,12 +21,19 @@ toc_footers:
 
 
 
+
 # Info
 
-Welcome to the generated API reference.
-[Get Postman Collection](http://localhost:8000/docs/collection.json)
+Welcome to API.
 
-
+
+
+
+
+
+
+
+
 <!-- END_INFO -->
 
 #Authentication
@@ -37,11 +43,6 @@ This api will be used in chrome extension in guest mode.
 This api will be used in chrome extension as registration wizard.
 
 > Example request:
-
-```bash
-curl -X POST "http://localhost:8000/api/v1/register" \
--H "Accept: application/json"
-```
 
 ```javascript
 var settings = {
@@ -71,11 +72,6 @@ $.ajax(settings).done(function (response) {
 This api will be used in chrome extension as Login wizard.
 
 > Example request:
-
-```bash
-curl -X POST "http://localhost:8000/api/v1/login" \
--H "Accept: application/json"
-```
 
 ```javascript
 var settings = {
@@ -109,11 +105,6 @@ This api is used to get initial samples stored in database according to selected
 
 > Example request:
 
-```bash
-curl -X POST "http://localhost:8000/api/v1/get_initial_samples" \
--H "Accept: application/json"
-```
-
 ```javascript
 var settings = {
     "async": true,
@@ -144,11 +135,6 @@ This api will be used in chrome extension to manage initial data. Middelware : J
 This api will be called in chrome extension to get initial sample data to be used in coefficients correction.
 
 > Example request:
-
-```bash
-curl -X POST "http://localhost:8000/api/v1/iSamples" \
--H "Accept: application/json"
-```
 
 ```javascript
 var settings = {
@@ -181,11 +167,6 @@ This api will be called in chrome extension to get all of products tracked by au
 
 > Example request:
 
-```bash
-curl -X POST "http://localhost:8000/api/v1/items" \
--H "Accept: application/json"
-```
-
 ```javascript
 var settings = {
     "async": true,
@@ -214,11 +195,6 @@ $.ajax(settings).done(function (response) {
 This api will be called in chrome extension to get a specific product with change histories being tracked by the authorized user.
 
 > Example request:
-
-```bash
-curl -X POST "http://localhost:8000/api/v1/items/get" \
--H "Accept: application/json"
-```
 
 ```javascript
 var settings = {
@@ -249,11 +225,6 @@ This api will be called in chrome extension to track a new product by the author
 
 > Example request:
 
-```bash
-curl -X POST "http://localhost:8000/api/v1/items/new" \
--H "Accept: application/json"
-```
-
 ```javascript
 var settings = {
     "async": true,
@@ -282,11 +253,6 @@ $.ajax(settings).done(function (response) {
  This api will be called in chrome extension in case of that the authenticated user doesn&#039;t need to track the product any more.
 
 > Example request:
-
-```bash
-curl -X POST "http://localhost:8000/api/v1/items/del" \
--H "Accept: application/json"
-```
 
 ```javascript
 var settings = {
@@ -320,11 +286,6 @@ This api will be called in chrome extension to add a new product into a sample d
 
 > Example request:
 
-```bash
-curl -X POST "http://localhost:8000/api/v1/products/add" \
--H "Accept: application/json"
-```
-
 ```javascript
 var settings = {
     "async": true,
@@ -356,11 +317,6 @@ Also this will be used to building corpus for machine learning.
 This api will be called in landing page.
 
 > Example request:
-
-```bash
-curl -X POST "http://localhost:8000/api/v1/samples/add" \
--H "Accept: application/json"
-```
 
 ```javascript
 var settings = {
