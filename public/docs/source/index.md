@@ -9,7 +9,7 @@ includes:
 search: true
 
 toc_footers:
-- <a href=''>Documentation Powered by Alexis</a>
+- <a href='mailTo:ecmascript.guru@gmail.com'>Documentation Powered by Alexis</a>
 ---
 <!-- START_INFO -->
 
@@ -46,8 +46,6 @@ This api will be used in chrome extension as registration wizard.
 
 ```javascript
 var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/register",
     "method": "POST",
     "data": {
@@ -91,8 +89,6 @@ This api will be used in chrome extension as Login wizard.
 
 ```javascript
 var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/login",
     "method": "POST",
     "data": {
@@ -154,6 +150,35 @@ var settings = {
 $.ajax(settings).done(function (response) {
     console.log(response);
 });
+
+//  Response
+{
+    "domain":"amazon.com",
+    "status":true,
+    "samples":[
+        {
+            "id":65,
+            "domain_id":3,
+            "min":1,
+            "max":5,
+            "est":60000,
+            "created_at":"2017-05-27 17:22:00",
+            "updated_at":"2017-05-27 17:22:00"
+        },
+        {
+            "id":66,
+            "domain_id":3,
+            "min":6,
+            "max":10,
+            "est":52500,
+            "created_at":"2017-05-27 17:22:00",
+            "updated_at":"2017-05-27 17:22:00"
+        },
+        {
+            //...
+        }
+    ]
+}
 ```
 
 
@@ -474,7 +499,8 @@ $.ajax(settings).done(function (response) {
 
 //  Response
 {
-    "status":true,"id":5
+    "status":true,
+    "id":5
 }
 ```
 

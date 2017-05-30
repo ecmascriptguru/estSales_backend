@@ -36,7 +36,7 @@
               <div id="toc">
       </div>
                     <ul class="toc-footer">
-                                  <li><a href=''>Documentation Powered by Alexis</a></li>
+                                  <li><a target="_blank" href='mailTo:ecmascript.guru@gmail.com'>Documentation Powered by Alexis</a></li>
                             </ul>
             </div>
     <div class="page-wrapper">
@@ -55,8 +55,6 @@
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/register",
     "method": "POST",
     "data": {
@@ -94,8 +92,6 @@ $.ajax(settings).done(function (response) {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/login",
     "method": "POST",
     "data": {
@@ -148,7 +144,36 @@ $.ajax(settings).done(function (response) {
 
 $.ajax(settings).done(function (response) {
     console.log(response);
-});</code></pre>
+});
+
+//  Response
+{
+    "domain":"amazon.com",
+    "status":true,
+    "samples":[
+        {
+            "id":65,
+            "domain_id":3,
+            "min":1,
+            "max":5,
+            "est":60000,
+            "created_at":"2017-05-27 17:22:00",
+            "updated_at":"2017-05-27 17:22:00"
+        },
+        {
+            "id":66,
+            "domain_id":3,
+            "min":6,
+            "max":10,
+            "est":52500,
+            "created_at":"2017-05-27 17:22:00",
+            "updated_at":"2017-05-27 17:22:00"
+        },
+        {
+            //...
+        }
+    ]
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/v1/get_initial_samples</code></p>
 <!-- END_d6a72841e3e6bb628c4b63c18da6ed04 -->
@@ -215,11 +240,9 @@ $.ajax(settings).done(function (response) {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "api/v1/items/",
     "data": {
-        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTQ5NjEzNzIxNCwiZXhwIjoxNDk2MTQwODE0LCJuYmYiOjE0OTYxMzcyMTQsImp0aSI6IjVJUnRqT2JlOFY2clJQeGMifQ.-kmnsi_tsrv7JJU9gKwyWEjJvB_DpR4052lRHoUYohY"
+        "token": "eyJ0eXA..JIUzI1NiJ9.eyJzdWIiOjU..lJQeGMifQ.-kmn...4052lRHoUYohY"
     },
     "method": "POST",
     "headers": {
@@ -234,7 +257,17 @@ $.ajax(settings).done(function (response) {
 //  Response
 {
     "status":true,
-    "items":[]
+    "items":[
+        {
+            "id":1,
+            "product_id":1,
+            "tracked_by":5,
+            "caption":"your caption",
+            "status":1,
+            "created_at":"2017-05-30 09:58:25",
+            "updated_at":"2017-05-30 09:58:25"
+        }
+    ]
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/v1/items</code></p>
@@ -246,18 +279,43 @@ $.ajax(settings).done(function (response) {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/items/get",
     "method": "POST",
-    "headers": {
-        "accept": "application/json"
+    "data": {
+        "id": 1,
+        "token": "eyJ0eXA..JIUzI1NiJ9.eyJzdWIiOjU..lJQeGMifQ.-kmn...4052lRHoUYohY"
     }
 }
 
 $.ajax(settings).done(function (response) {
     console.log(response);
-});</code></pre>
+});
+
+//  Response
+{
+    "status":true,
+    "product":{
+        "id":1,
+        "category_id":2,
+        "domain_id":3,
+        "asin":"DFDJEPOPEGSLDKFJ",
+        "title":"First &amp; Last",
+        "created_at":"2017-05-30 09:58:25",
+        "updated_at":"2017-05-30 09:58:25",
+        "histories":[
+            {
+                "id":1,
+                "product_id":1,
+                "bsr":"25468",
+                "currency":"USD",
+                "price":124.99,
+                "est":235,
+                "created_at":"2017-05-30 09:58:25",
+                "updated_at":"2017-05-30 09:58:25"
+            }
+        ]
+    }
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/v1/items/get</code></p>
 <!-- END_f23222161d4405120d2d6a4c70a300f9 -->
@@ -271,7 +329,7 @@ $.ajax(settings).done(function (response) {
     "url": "http://localhost:8000/api/v1/items/new",
     "method": "POST",
     "data": {
-        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTQ5NjEzNzIxNCwiZXhwIjoxNDk2MTQwODE0LCJuYmYiOjE0OTYxMzcyMTQsImp0aSI6IjVJUnRqT2JlOFY2clJQeGMifQ.-kmnsi_tsrv7JJU9gKwyWEjJvB_DpR4052lRHoUYohY",
+        "token": "eyJ0eXAiOixxUzI1NiJ9.eyJzdWIiOjUsIml...QeGMifQ.-kmnsi...52lRHoUYohY",
         "domain": "amazon.com",
         "title": "First &amp; Last",
         "asin": "DFDJEPOPEGSLDKFJ",
@@ -285,7 +343,13 @@ $.ajax(settings).done(function (response) {
 
 $.ajax(settings).done(function (response) {
     console.log(response);
-});</code></pre>
+});
+
+//  Response
+{
+    "status":true,
+    "id":2
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/v1/items/new</code></p>
 <!-- END_d5d6ad70f971a5fda06bb1ecda8be70e -->
@@ -296,18 +360,23 @@ $.ajax(settings).done(function (response) {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/items/del",
     "method": "POST",
-    "headers": {
-        "accept": "application/json"
+    "data" : {
+        "token" : "eyJ0eXAiOixxUzI1NiJ9.eyJzdWIiOjUsIml...QeGMifQ.-kmnsi...52lRHoUYohY",
+        "id": "1"
     }
 }
 
 $.ajax(settings).done(function (response) {
     console.log(response);
-});</code></pre>
+});
+
+//  Response
+{
+    "status":true,
+    "message":"Successfully removed."
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/v1/items/del</code></p>
 <!-- END_3bdf32c97cbef9dbea04cdc9914152db -->
@@ -321,18 +390,30 @@ Also this will be used to building corpus for machine learning.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/products/add",
     "method": "POST",
-    "headers": {
-        "accept": "application/json"
+    "data": {
+        "token": "eyJ0e..UzI1NiJ9.eyJzdWI...lJQeGMifQ.-kmnsi_ts..RHoUYohY",
+        "domain": "amazon.com",
+        "title": "First &amp; Last",
+        "asin": "DFDJEPOPEGSLDKFJ",
+        "bsr": 25468,
+        "currency": "USD",
+        "price": 124.99,
+        "est": 235,
+        "caption": "My first product to be tracked."
     }
 }
 
 $.ajax(settings).done(function (response) {
     console.log(response);
-});</code></pre>
+});
+
+//  Response
+{
+    "status":true,
+    "id":3
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/v1/products/add</code></p>
 <!-- END_949df4027127e587b7550201c3bdc7ab -->
@@ -346,18 +427,27 @@ Also this will be used to building corpus for machine learning.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/samples/add",
     "method": "POST",
+    "data": {
+        "domain": "amazon.co.uk",
+        "bsr": 5315,
+        "sales": 235
+    },
     "headers": {
-        "accept": "application/json"
+        "X-CSRF-TOKEN" : "5uxja9mQt1ln6BWY0IF5YYE1rllrT356XUXWYIIS"
     }
 }
 
 $.ajax(settings).done(function (response) {
     console.log(response);
-});</code></pre>
+});
+
+//  Response
+{
+    "status":true,
+    "id":5
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/v1/samples/add</code></p>
 <!-- END_22ceebf47ac9c808e6a516d023977f83 -->
