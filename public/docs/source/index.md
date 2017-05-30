@@ -9,7 +9,7 @@ includes:
 search: true
 
 toc_footers:
-- <a href='mailTo:ecmascript.guru@gmail.com'>Documentation Powered by Alexis</a>
+- <a href='mailTo:ecmascript.guru@gmail.com'>Documented by Alexis Richard</a>
 ---
 <!-- START_INFO -->
 
