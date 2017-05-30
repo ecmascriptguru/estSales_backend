@@ -10,6 +10,10 @@ use Response;
 use Hash;
 use JWTAuth;
 
+/**
+ * @resource Authentication
+ * This api will be used in chrome extension in guest mode.
+ */
 class AuthController extends Controller
 {
     /**
@@ -23,11 +27,8 @@ class AuthController extends Controller
     }
 
     /**
-     * @resource Session
-     *
-     * Create session after signup via API.
-     *
-     * @return json object
+     * User Registration API
+     * This api will be used in chrome extension as registration wizard.
      */
     public function signup() {
         $credentials = Input::only('name', 'email', 'password');
@@ -46,11 +47,7 @@ class AuthController extends Controller
         );
     }
 
-    /**
-    * Get the validation rules that apply to the request.
-    *
-    * @return array
-    */
+    
     public function rules()
     {
         return [
@@ -61,11 +58,8 @@ class AuthController extends Controller
     }
 
     /**
-     * @resource Session
-     *
-     * Create session via API.
-     *
-     * @return json object
+     * User Login API
+     * This api will be used in chrome extension as Login wizard.
      */
     public function signin() {
         $credentials = Input::only('email', 'password');
