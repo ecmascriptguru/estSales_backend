@@ -49,8 +49,9 @@ class ItemsController extends Controller
      */
     public function get(Request $request) {
         $item_id = $request->input('id');
-        $item = Item::where(['id' => $item_id])->first();
-        $product = $item->product->with('histories');
+        $item = Item::find($item_id)->first();
+        $product = $item->product;
+        $histories = $product->histories;
 
         return Response::json([
             'status' => true,

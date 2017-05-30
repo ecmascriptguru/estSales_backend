@@ -236,7 +236,7 @@ This api will be called in chrome extension to get all of products tracked by au
 var settings = {
     "url": "api/v1/items/",
     "data": {
-        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTQ5NjEzNzIxNCwiZXhwIjoxNDk2MTQwODE0LCJuYmYiOjE0OTYxMzcyMTQsImp0aSI6IjVJUnRqT2JlOFY2clJQeGMifQ.-kmnsi_tsrv7JJU9gKwyWEjJvB_DpR4052lRHoUYohY"
+        "token": "eyJ0eXA..JIUzI1NiJ9.eyJzdWIiOjU..lJQeGMifQ.-kmn...4052lRHoUYohY"
     },
     "method": "POST",
     "headers": {
@@ -282,14 +282,41 @@ This api will be called in chrome extension to get a specific product with chang
 var settings = {
     "url": "http://localhost:8000/api/v1/items/get",
     "method": "POST",
-    "headers": {
-        "accept": "application/json"
+    "data": {
+        "id": 1,
+        "token": "eyJ0eXA..JIUzI1NiJ9.eyJzdWIiOjU..lJQeGMifQ.-kmn...4052lRHoUYohY"
     }
 }
 
 $.ajax(settings).done(function (response) {
     console.log(response);
 });
+
+//  Response
+{
+    "status":true,
+    "product":{
+        "id":1,
+        "category_id":2,
+        "domain_id":3,
+        "asin":"DFDJEPOPEGSLDKFJ",
+        "title":"First & Last",
+        "created_at":"2017-05-30 09:58:25",
+        "updated_at":"2017-05-30 09:58:25",
+        "histories":[
+            {
+                "id":1,
+                "product_id":1,
+                "bsr":"25468",
+                "currency":"USD",
+                "price":124.99,
+                "est":235,
+                "created_at":"2017-05-30 09:58:25",
+                "updated_at":"2017-05-30 09:58:25"
+            }
+        ]
+    }
+}
 ```
 
 
@@ -310,7 +337,7 @@ var settings = {
     "url": "http://localhost:8000/api/v1/items/new",
     "method": "POST",
     "data": {
-        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTQ5NjEzNzIxNCwiZXhwIjoxNDk2MTQwODE0LCJuYmYiOjE0OTYxMzcyMTQsImp0aSI6IjVJUnRqT2JlOFY2clJQeGMifQ.-kmnsi_tsrv7JJU9gKwyWEjJvB_DpR4052lRHoUYohY",
+        "token": "eyJ0eXAiOixxUzI1NiJ9.eyJzdWIiOjUsIml...QeGMifQ.-kmnsi...52lRHoUYohY",
         "domain": "amazon.com",
         "title": "First & Last",
         "asin": "DFDJEPOPEGSLDKFJ",
@@ -325,6 +352,12 @@ var settings = {
 $.ajax(settings).done(function (response) {
     console.log(response);
 });
+
+//  Response
+{
+    "status":true,
+    "id":2
+}
 ```
 
 
@@ -342,18 +375,23 @@ $.ajax(settings).done(function (response) {
 
 ```javascript
 var settings = {
-    "async": true,
-    "crossDomain": true,
     "url": "http://localhost:8000/api/v1/items/del",
     "method": "POST",
-    "headers": {
-        "accept": "application/json"
+    "data" : {
+        "token" : "eyJ0eXAiOixxUzI1NiJ9.eyJzdWIiOjUsIml...QeGMifQ.-kmnsi...52lRHoUYohY",
+        "id": "1"
     }
 }
 
 $.ajax(settings).done(function (response) {
     console.log(response);
 });
+
+//  Response
+{
+    "status":true,
+    "message":"Successfully removed."
+}
 ```
 
 
