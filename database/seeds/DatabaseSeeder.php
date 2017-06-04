@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
         $this->call(VoyagerDatabaseSeeder::class);
         $this->call(VoyagerDummyDatabaseSeeder::class);
         $this->call(DomainsTableSeeder::class);
-        $this->call(InitialSamplesTableSeeder::class);
         $this->call(ProductCategoriesTableSeeder::class);
+        $this->call(InitialSamplesTableSeeder::class);
     }
 }

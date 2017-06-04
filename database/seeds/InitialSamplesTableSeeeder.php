@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\InitialSample;
 use App\Domain;
+use App\ProductCategory as Category;
 
 class InitialSamplesTableSeeder extends Seeder
 {
@@ -377,11 +378,22 @@ class InitialSamplesTableSeeder extends Seeder
         ];
         
         $domains = Domain::all();
+        $book = Category::where(['category_name' => "Book"])->first();
+        $eBook = Category::where(['category_name' => "eBook"])->first();
         foreach($domains as $domain) {
             $samples = $InitialData[$domain->name];
             foreach($samples as $sample) {
                 $row = InitialSample::FirstOrCreate([
                     'domain_id' => $domain->id,
+                    'category_id' => $book->id,
+                    'min' => $sample['min'],
+                    'max' => $sample['max'],
+                    'est' => $sample['estSale']
+                ]);
+
+                $row = InitialSample::FirstOrCreate([
+                    'domain_id' => $domain->id,
+                    'category_id' => $eBook->id,
                     'min' => $sample['min'],
                     'max' => $sample['max'],
                     'est' => $sample['estSale']

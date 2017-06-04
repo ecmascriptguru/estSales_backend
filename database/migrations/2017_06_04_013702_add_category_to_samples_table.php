@@ -15,12 +15,12 @@ class AddCategoryToSamplesTable extends Migration
     {
         Schema::table('initial_samples', function (Blueprint $table) {
             $table->integer('category_id')->default(1)->unsigned()->after('id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('product_categories');
         });
 
         Schema::table('samples', function (Blueprint $table) {
             $table->integer('category_id')->default(1)->unsigned()->after('id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('product_categories');
         });
     }
 
