@@ -33,10 +33,18 @@ class SamplesController extends Controller
         $domain = $request->input('domain');
         $bsr = $request->input('bsr');
         $sales = $request->input('sales');
+        $category = $request->input('category');
 
         $domain = Domain::firstOrCreate(['name' => $domain]);
+
+        $category = Category::where(['category_name' => $category])->first();
+        if (sizeof($category) < 1) {
+            $category = Category::where(['category_name' => 'Book'])->first();
+        }
+
         $sample = Sample::firstOrNew([
             'domain_id' => $domain->id,
+            'category_id' => $category->id,
             'bsr' => $bsr,
             'sales' => $sales
         ]);

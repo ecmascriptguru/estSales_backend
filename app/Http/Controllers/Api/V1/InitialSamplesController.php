@@ -36,8 +36,8 @@ class InitialSamplesController extends Controller
         }
         
         $domain = Domain::where('name', $domain)->first();
-        $category = Category::where(['category_name' => $category])->first();
 
+        $category = Category::where(['category_name' => $category])->first();
         if (sizeof($category) < 1) {
             $category = Category::where(['category_name' => 'Book'])->first();
         }
