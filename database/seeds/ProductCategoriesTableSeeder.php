@@ -18,5 +18,9 @@ class ProductCategoriesTableSeeder extends Seeder
             'parent_id' => $root->id,
             'category_name' => "Book"
         ]);
+        $eBook = Category::firstOrCreate([
+            'parent_id' => $root->id,
+            'category_name' => "eBook"
+        ]);
     }
 }
