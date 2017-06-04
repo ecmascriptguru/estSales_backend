@@ -8,6 +8,7 @@ use Response;
 
 use App\Domain;
 use App\Sample;
+use App\ProductCategory as Category;
 
 /**
  * @resource Sample

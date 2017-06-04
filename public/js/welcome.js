@@ -859,6 +859,7 @@ var SampleForm = function () {
     var _domain = null,
         _bsr = null,
         _sales = null,
+        _category = 2,
         $newForm = $("#new-panel"),
         $demo = $("#demo-panel"),
         $btnBack = $("#back"),
@@ -866,6 +867,7 @@ var SampleForm = function () {
         addSampleApiUrl = apiBaseUrl + 'samples/add',
         $domain = $("#new_domain"),
         $bsr = $("#new_bsr"),
+        $category = $("#new_category"),
         token = $("meta[name='csrf-token']").attr('content'),
         $sales = $("#sales");
 
@@ -899,6 +901,7 @@ var SampleForm = function () {
         $btnSave.click(function () {
             saveSample({
                 domain: _domain,
+                category: _category,
                 bsr: _bsr,
                 sales: _sales
             }, function (response) {
@@ -908,6 +911,10 @@ var SampleForm = function () {
 
         $domain.change(function (event) {
             _domain = event.target.value;
+        });
+
+        $category.change(function (event) {
+            _category = event.target.value;
         });
 
         $bsr.change(function (event) {
@@ -923,6 +930,7 @@ var SampleForm = function () {
         _domain = $domain.val();
         _bsr = parseInt($bsr.val());
         _sales = parseInt($sales.val());
+        _category = parseInt($category.val());
 
         initEvents();
     };
