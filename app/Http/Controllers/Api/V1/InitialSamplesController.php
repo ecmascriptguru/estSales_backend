@@ -29,12 +29,18 @@ class InitialSamplesController extends Controller
      */
     public function index(Request $request) {
         $domain = $request->input('domain');
+        $category = $request->input('category');
 
         if (!isset($domain) || empty($domain)) {
             $domain = "amazon.com";
         }
         
         $domain = Domain::where('name', $domain)->first();
+        $category = Category::where(['category_name' => $category])->first();
+
+        if (sizeof($category) < 1) {
+            $category = Category::where(['category_name' => 'Book'])->first();
+        }
 
         if (sizeof($domain) == 0) {
             return Response::json([
@@ -43,7 +49,10 @@ class InitialSamplesController extends Controller
             ]);
         } else {
             return Response::json([
-                'samples' => $domain->initialSamples
+                'samples' => InitiSample::where([
+                    'domain_id' => $domain->id,
+                    'category_id' => $category->id
+                ])->get()
             ]);
         }
     }

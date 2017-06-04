@@ -13,8 +13,8 @@ let domains = [
         "amazon.jp"
     ];
 
-// let env = "dev";
-let env = "staging";
+let env = "dev";
+// let env = "staging";
 let apiBaseUrl = null;
 if (env === "dev") {
     apiBaseUrl = "http://localhost:8000/api/v1/";
@@ -25,10 +25,12 @@ if (env === "dev") {
 let Calculator = (function() {
     let _domain = domains[0],
         _bsr = 1,
+        _category = 2,
         _data = [],
         _initialSamplesAPIBaseUrl = apiBaseUrl + "get_initial_samples"
         _estimation = 0,
         $_domain = $("#domain"),
+        $_category = $("#category"),
         $_bsr = $("#bsr"),
         $add_sample = $("#add_sample"),
         $newForm = $("#new-panel"),
@@ -65,7 +67,7 @@ let Calculator = (function() {
         $_unit_sales.val(parseInt(_estimation));
     }
 
-    let getSamples = (domain, success, failure) => {
+    let getSamples = (domain, category, success, failure) => {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -75,7 +77,8 @@ let Calculator = (function() {
             url: _initialSamplesAPIBaseUrl,
             method: "post",
             data: {
-                domain: domain
+                domain: domain,
+                category: category
             },
             success: (response) => {
                 if (response.status) {
@@ -91,11 +94,11 @@ let Calculator = (function() {
     }
 
     let init = () => {
-        getSamples(_domain, function(samples) {
+        getSamples(_domain, _category, function(samples) {
             _data = samples;
             $_domain.change((event) => {
                 _domain = event.target.value;
-                getSamples(_domain, (response) => {
+                getSamples(_domain, _category, (response) => {
                     _data = response;
                     calculate();
                 });
@@ -104,6 +107,14 @@ let Calculator = (function() {
             $_bsr.change((event) => {
                 _bsr = parseInt(event.target.value);
                 calculate();
+            });
+
+            $_category.change((event) => {
+                _category = event.target.value;
+                getSamples(_domain, _category, (response) => {
+                    _data = response;
+                    calculate();
+                });
             });
 
             $add_sample.click(() => {

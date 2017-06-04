@@ -78,6 +78,13 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for="category">Please select a category.</label>
+                                <select name="category" class="form-control" id="category">
+                                    <option value="2">Book</option>
+                                    <option value="2">eBook</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="bsr">Best Seller Rank</label>
                                 <input type="number" id="bsr" name="bsr" value="1" min="1" max="1000000" class="form-control">
                             </div>
