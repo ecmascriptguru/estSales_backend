@@ -51,9 +51,12 @@ class ProductsController extends Controller
         $history = new ProductHistory;
         $history->product_id=  $product->id;
         $history->bsr = $request->input('bsr');
+        $history->isbn = $request->input('isbn');
         $history->currency = $request->input('currency');
         $history->price = $request->input('price');
         $history->est = $request->input('est');
+        $history->monthly_rev = $request->input('monthly_rev');
+        $history->reviews = $request->input('reviews');
 
         if ($history->save()) {
             return Response::json([
