@@ -140,6 +140,7 @@ var settings = {
     "method": "POST",
     "data": {
         "domain" : "amazon.com",
+        "category": "Book" // or "eBook"
     },
     "headers": {
         "accept": "application/json",

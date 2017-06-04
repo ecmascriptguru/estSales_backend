@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Response;
 
 use App\Domain;
+use App\ProductCategory as Category;
+use App\InitialSample;
 
 /**
  *  @resource Initial Sample : Frontend
@@ -30,12 +32,18 @@ class ISamplesController extends Controller
      */
     public function ajax_samples(Request $request) {
         $domain = $request->input('domain');
+        $category = $request->input('category');
 
         if (!isset($domain) || empty($domain)) {
             $domain = "amazon.com";
         }
         
         $domain = Domain::where('name', $domain)->first();
+
+        $category = Category::where(['category_name' => $category])->first();
+        if (sizeof($category) < 1) {
+            $category = Category::where(['category_name' => 'Book'])->first();
+        }
 
         if (sizeof($domain) == 0) {
             return Response::json([
@@ -46,7 +54,10 @@ class ISamplesController extends Controller
             return Response::json([
                 'domain' => $domain->name,
                 'status' => true,
-                'samples' => $domain->initialSamples
+                'samples' => InitialSample::where([
+                    'domain_id' => $domain->id,
+                    'category_id' => $category->id
+                ])->get()
             ]);
         }
     }

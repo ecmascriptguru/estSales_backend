@@ -757,7 +757,7 @@ if (env === "dev") {
 var Calculator = function () {
     var _domain = domains[0],
         _bsr = 1,
-        _category = 2,
+        _category = "Book",
         _data = [],
         _initialSamplesAPIBaseUrl = apiBaseUrl + "get_initial_samples";
     _estimation = 0, $_domain = $("#domain"), $_category = $("#category"), $_bsr = $("#bsr"), $add_sample = $("#add_sample"), $newForm = $("#new-panel"), $demo = $("#demo-panel"), token = $("meta[name='csrf-token']")[0].content, $_unit_sales = $("#estimation");
