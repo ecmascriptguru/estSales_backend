@@ -159,6 +159,7 @@ $.ajax(settings).done(function (response) {
     "samples":[
         {
             "id":65,
+            "category_id": 2,
             "domain_id":3,
             "min":1,
             "max":5,
@@ -168,6 +169,7 @@ $.ajax(settings).done(function (response) {
         },
         {
             "id":66,
+            "category_id": 2,
             "domain_id":3,
             "min":6,
             "max":10,
@@ -203,7 +205,8 @@ var settings = {
     "method": "POST",
     "data": {
         "token": "eyJ0eX..1NiJ9.eyJzdWIi...lJQeGMifQ.-kmnsi_tsr...RHoUYohY",
-        "domain": "amazon.co.uk"
+        "domain": "amazon.co.uk",
+        "category": "Book" // or "eBook"
     },
     "headers": {
         "accept": "application/json"
@@ -221,6 +224,7 @@ $.ajax(settings).done(function (response) {
     "samples":[
         {
             "id":65,
+            "category_id": 2,
             "domain_id":3,
             "min":1,
             "max":5,
@@ -230,6 +234,7 @@ $.ajax(settings).done(function (response) {
         },
         {
             "id":66,
+            "category_id": 2,
             "domain_id":3,
             "min":6,
             "max":10,
@@ -326,6 +331,7 @@ $.ajax(settings).done(function (response) {
         "category_id":2,
         "domain_id":3,
         "asin":"DFDJEPOPEGSLDKFJ",
+        "isbn": "isbn_value",
         "title":"First & Last",
         "created_at":"2017-05-30 09:58:25",
         "updated_at":"2017-05-30 09:58:25",
@@ -337,6 +343,9 @@ $.ajax(settings).done(function (response) {
                 "currency":"USD",
                 "price":124.99,
                 "est":235,
+                "pages": 25,
+                "monthly_rev": 254865,
+                "reviews": 57,
                 "created_at":"2017-05-30 09:58:25",
                 "updated_at":"2017-05-30 09:58:25"
             }
@@ -368,9 +377,13 @@ var settings = {
         "title": "First & Last",
         "asin": "DFDJEPOPEGSLDKFJ",
         "bsr": 25468,
+        "isbn": "isbn_number",
         "currency": "USD",
         "price": 124.99,
         "est": 235,
+        "pages": 25,
+        "monthly_rev": 254865,
+        "reviews": 57,
         "caption": "My first product to be tracked."
     }
 }
@@ -446,9 +459,13 @@ var settings = {
         "title": "First & Last",
         "asin": "DFDJEPOPEGSLDKFJ",
         "bsr": 25468,
+        "isbn": "isbn_number",
         "currency": "USD",
         "price": 124.99,
         "est": 235,
+        "pages": 25,
+        "monthly_rev": 254865,
+        "reviews": 57,
         "caption": "My first product to be tracked."
     }
 }

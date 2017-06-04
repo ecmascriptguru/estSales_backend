@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>API Reference</title>
 
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="js/all.js"></script>
+    <link rel="stylesheet" href="docs/css/style.css" />
+    <script src="docs/js/all.js"></script>
     <script>
         $(function() {
             setupLanguages(["javascript"]);
@@ -19,11 +19,11 @@
     <a href="#" id="nav-button">
         <span>
             NAV
-            <img src="images/navbar.png" />
+            <img src="docs/images/navbar.png" />
         </span>
     </a>
     <div class="tocify-wrapper">
-        <img src="images/logo.png" />
+        <img src="docs/images/logo.png" />
             <div class="lang-selector">
                 <a href="#" data-language-name="javascript">javascript</a>
             </div>
@@ -133,6 +133,7 @@ $.ajax(settings).done(function (response) {
     "method": "POST",
     "data": {
         "domain" : "amazon.com",
+        "category": "Book" // or "eBook"
     },
     "headers": {
         "accept": "application/json",
@@ -151,6 +152,7 @@ $.ajax(settings).done(function (response) {
     "samples":[
         {
             "id":65,
+            "category_id": 2,
             "domain_id":3,
             "min":1,
             "max":5,
@@ -160,6 +162,7 @@ $.ajax(settings).done(function (response) {
         },
         {
             "id":66,
+            "category_id": 2,
             "domain_id":3,
             "min":6,
             "max":10,
@@ -188,7 +191,8 @@ $.ajax(settings).done(function (response) {
     "method": "POST",
     "data": {
         "token": "eyJ0eX..1NiJ9.eyJzdWIi...lJQeGMifQ.-kmnsi_tsr...RHoUYohY",
-        "domain": "amazon.co.uk"
+        "domain": "amazon.co.uk",
+        "category": "Book" // or "eBook"
     },
     "headers": {
         "accept": "application/json"
@@ -206,6 +210,7 @@ $.ajax(settings).done(function (response) {
     "samples":[
         {
             "id":65,
+            "category_id": 2,
             "domain_id":3,
             "min":1,
             "max":5,
@@ -215,6 +220,7 @@ $.ajax(settings).done(function (response) {
         },
         {
             "id":66,
+            "category_id": 2,
             "domain_id":3,
             "min":6,
             "max":10,
@@ -297,6 +303,7 @@ $.ajax(settings).done(function (response) {
         "category_id":2,
         "domain_id":3,
         "asin":"DFDJEPOPEGSLDKFJ",
+        "isbn": "isbn_value",
         "title":"First &amp; Last",
         "created_at":"2017-05-30 09:58:25",
         "updated_at":"2017-05-30 09:58:25",
@@ -308,6 +315,9 @@ $.ajax(settings).done(function (response) {
                 "currency":"USD",
                 "price":124.99,
                 "est":235,
+                "pages": 25,
+                "monthly_rev": 254865,
+                "reviews": 57,
                 "created_at":"2017-05-30 09:58:25",
                 "updated_at":"2017-05-30 09:58:25"
             }
@@ -331,10 +341,14 @@ $.ajax(settings).done(function (response) {
         "domain": "amazon.com",
         "title": "First &amp; Last",
         "asin": "DFDJEPOPEGSLDKFJ",
+        "isbn": "isbn_number",
         "bsr": 25468,
         "currency": "USD",
         "price": 124.99,
         "est": 235,
+        "pages": 25,
+        "monthly_rev": 254865,
+        "reviews": 57,
         "caption": "My first product to be tracked."
     }
 }
@@ -395,10 +409,14 @@ Also this will be used to building corpus for machine learning.</p>
         "domain": "amazon.com",
         "title": "First &amp; Last",
         "asin": "DFDJEPOPEGSLDKFJ",
+        "isbn": "isbn_number",
         "bsr": 25468,
         "currency": "USD",
         "price": 124.99,
         "est": 235,
+        "pages": 25,
+        "monthly_rev": 254865,
+        "reviews": 57,
         "caption": "My first product to be tracked."
     }
 }
