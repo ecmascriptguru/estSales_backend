@@ -7,6 +7,8 @@ use Response;
 use App\Http\Controllers\Controller;
 
 use App\Domain;
+use App\ProductCategory as Category;
+use App\InitialSample;
 
 /**
  * @resource InitialSample
@@ -49,7 +51,7 @@ class InitialSamplesController extends Controller
             ]);
         } else {
             return Response::json([
-                'samples' => InitiSample::where([
+                'samples' => InitialSample::where([
                     'domain_id' => $domain->id,
                     'category_id' => $category->id
                 ])->get()
