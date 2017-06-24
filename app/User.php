@@ -28,6 +28,6 @@ class User extends Authenticatable
     ];
 
     public function items() {
-        return $this->hasMany('App\Item', 'tracked_by');
+        return $this->hasMany('App\Item', 'tracked_by')->with('product');
     }
 }

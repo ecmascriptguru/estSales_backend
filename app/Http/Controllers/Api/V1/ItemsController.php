@@ -55,7 +55,8 @@ class ItemsController extends Controller
 
         return Response::json([
             'status' => true,
-            'product' => $product
+            'product' => $product,
+            'histories' => $histories
         ]);
     }
 
@@ -67,7 +68,11 @@ class ItemsController extends Controller
     public function add(Request $request) {
         $user = $request->input('user');
         $domain = $request->input('domain');
-        $category = Category::firstOrCreate(['category_name' => 'Book']);
+        $category = $request->input('category');
+        if ($category == "") {
+            $category = "Books";
+        }
+        $category = Category::firstOrCreate(['category_name' => $category]);
         if (empty($domain)) {
             $domain = "amazon.com";
         }
@@ -82,28 +87,32 @@ class ItemsController extends Controller
         $product->category_id = $category->id;
         $product->title = $request->input('title');
         $product->save();
-
-        $history = new ProductHistory;
-        $history->product_id=  $product->id;
-        $history->bsr = $request->input('bsr');
-        $history->currency = $request->input('currency');
-        $history->price = $request->input('price');
-        $history->est = $request->input('est');
-
-        $history->pages = $request->input('pages');
-        $history->monthly_rev = $request->input('monthly_rev');
-        $history->reviews = $request->input('reviews');
+        
+        $history = ProductHistory::firstOrCreate([
+            'product_id' => $product->id,
+            'bsr' => $request->input('bsr'),
+            'currency' => $request->input('currency'),
+            'price' => $request->input('price'),
+            'est' => $request->input('est'),
+            'pages' => $request->input('pages'),
+            'monthly_rev' => $request->input('monthly_rev'),
+            'reviews' => $request->input('reviews'),
+        ]);
 
         $item = Item::firstOrNew([
             'product_id' => $product->id,
             'tracked_by' => $user->id
         ]);
-        $item->caption = $request->input('caption') || "No camption";
+        $item->caption = ($request->input('caption')) ? $request->input('caption') : "No camption";
+        $item->product;
 
         if ($history->save() && $item->save()) {
             return Response::json([
                 'status' => true,
-                'id' => $item->id
+                'id' => $item->id,
+                'item' => $item,
+                'product' => $product,
+                'histories' => $product->histories
             ]);
         } else {
             return Response::json([
@@ -119,9 +128,9 @@ class ItemsController extends Controller
      */
     public function del(Request $request) {
         $user = $request->input('user');
-        $item_id = $request->input('id');
+        $product_id = $request->input('id');
         $item = Item::where([
-            'id' => $item_id,
+            'product_id' => $product_id,
             'tracked_by' => $user->id
         ])->first();
 

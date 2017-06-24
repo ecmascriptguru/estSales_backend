@@ -47,10 +47,12 @@ class InitialSamplesController extends Controller
         if (sizeof($domain) == 0) {
             return Response::json([
                 'status' => false,
+                'samples' => [],
                 'message' => "Domain not found."
             ]);
         } else {
             return Response::json([
+                'status' => true,
                 'samples' => InitialSample::where([
                     'domain_id' => $domain->id,
                     'category_id' => $category->id
