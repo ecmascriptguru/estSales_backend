@@ -48,16 +48,29 @@ class ItemsController extends Controller
      * This api will be called in chrome extension to get a specific product with change histories being tracked by the authorized user.
      */
     public function get(Request $request) {
-        $item_id = $request->input('id');
-        $item = Item::find($item_id)->first();
-        $product = $item->product;
-        $histories = $product->histories;
+        $productID = $request->input('id');
+        $user = $request->input('user');
+        $item = Item::where([
+            'product_id' => $productID,
+            'tracked_by' => $user->id
+        ])->first();
 
-        return Response::json([
-            'status' => true,
-            'product' => $product,
-            'histories' => $histories
-        ]);
+        if ($item) {
+            $product = $item->product;
+            $histories = $product->histories;
+
+            return Response::json([
+                'status' => true,
+                'product' => $product,
+                'histories' => $histories
+            ]);
+        } else {
+            return Response::json([
+                'status' => false,
+                'product' => null,
+                'histories' => null
+            ]);
+        }
     }
 
 
