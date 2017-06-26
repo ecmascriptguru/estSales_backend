@@ -16,11 +16,11 @@ class ProductCategoriesTableSeeder extends Seeder
         $root = Category::firstOrCreate(['category_name' => 'root']);
         $book = Category::firstOrCreate([
             'parent_id' => $root->id,
-            'category_name' => "Book"
+            'category_name' => "Books"
         ]);
         $eBook = Category::firstOrCreate([
             'parent_id' => $root->id,
-            'category_name' => "eBook"
+            'category_name' => "eBooks"
         ]);
     }
 }
