@@ -1,0 +1,240 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "OpenSans";
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 1.4em;
+}
+body * {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    font-size: 37px;
+    font-weight: 700;
+}
+h2 {
+    font-size: 19px;
+    font-weight: 700;
+}
+h3 {
+    font-size: 15px;
+    font-weight: 700;
+}
+ul, ol, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #1b56dc;
+}
+b {
+    font-weight: bold;
+}
+header {
+    width: 100%;
+    height: 55px;
+    border-bottom: 1px solid #ebebeb;
+}
+header .nav {
+    padding-top: 20px;
+    float: left;
+}
+header .nav li {
+    margin-left: 35px;
+    float: left;
+}
+header .nav li a {
+    font-size: 13px;
+    font-weight: 400;
+    color: #000000;
+    line-height: 28px;
+    height: 28px;
+}
+header .nav li a img {
+    vertical-align: middle;
+    margin-bottom: 0.75em;
+}
+header .phone {
+    float: right;
+    margin-right: 50px;
+}
+header .phone h2 {
+    margin-top: 10px;
+    line-height: 34px;
+    padding-left: 44px;
+}
+footer {
+    width: 100%;
+    height: 145px;
+    border-top: 1px solid #ebebeb;
+}
+footer .copyright {
+    margin: 0;
+    padding: 40px 130px 70px;
+    text-align: center;
+}
+.content {
+    width: 1200px;
+    margin: 0 auto;
+}
+.clear {
+    clear: both;
+}
+.red {
+    color: #d30202;
+}
+.green {
+    color: #01ba1f;
+}
+.yellow {
+    color: #ffc600;
+}
+.blue {
+    color: #1b56dc;
+}
+.text-right {
+    text-align: right;
+}
+.text-center {
+    text-align: center;
+}
+.icon {
+    display: inline-block;
+}
+.phone1 {
+    background: url("../images/phone1.png") no-repeat scroll 0 0 transparent;
+}
+.phone2 {
+    background: url("../images/phone2.png") no-repeat scroll 0 0 transparent;
+}
+.logo-wrapper {
+    width: 258px;
+    height: 228px;
+    background: url("../images/logo_bg.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    margin: -55px auto 15px;
+    position: relative;
+}
+.logo-wrapper a {
+    line-height: 39px;
+    height: 39px;
+}
+.logo-wrapper a img {
+    vertical-align: middle;
+    margin-bottom: 0.25em;
+}
+.logo-wrapper a h3 {
+    color: #ffffff;
+    display: inline;
+
+}
+.logo-wrapper .logo-black-bg {
+    background: url("../images/logo_black_bg.png") no-repeat scroll 0 0 transparent;
+    width: 251px;
+    height: 39px;
+    display: inline-block;
+    margin-top: 18px;
+    margin-bottom: 23px;
+    margin-left: -16px;
+    text-align: right;
+    padding-right: 15px;
+}
+.logo-wrapper .logo-red-bg {
+    background: url("../images/logo_red_bg.png") no-repeat scroll 0 0 transparent;
+    width: 251px;
+    height: 39px;
+    display: inline-block;
+    margin-top: 23px;
+    margin-left: 21px;
+    text-align: left;
+    padding-left: 15px;
+}
+.info {
+    text-align: center;
+}
+.info p {
+    padding: 0px 130px;
+}
+.recommend-wrapper {
+    background: url("../images/recommend_bg.png") no-repeat scroll 0 0 transparent;
+    width: 606px;
+    height: 367px;
+    margin: 25px auto 50px;
+    padding: 60px 95px 70px;
+    position: relative;
+}
+.recommend-wrapper .title {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+.recommend-wrapper h3 {
+    font-family: "OpenSans-Semibold";
+    color: #939393;
+}
+.recommend-wrapper h3.call {
+    padding-left: 85px;
+}
+.recommend-wrapper .phone2 {
+    padding-left: 82px;
+    line-height: 64px;
+}
+.recommend-wrapper .recommend-div {
+    background: url("../images/recommend_div.png") no-repeat scroll 0 0 transparent;
+    width: 410px;
+    height: 13px;
+    display: block;
+    margin: 15px auto;
+}
+.recommend-wrapper .avatar {
+    margin: 0 auto;
+    width: 259px;
+    height: 55px;
+    display: block;
+}
+.blog-wrapper .blog {
+    margin-left: 4px;
+    position: relative;
+    padding: 40px 30px;
+    background-color: #ebebeb;
+    width: 394px;
+    height: auto;
+    display: inline-table;
+    vertical-align: bottom;
+}
+.blog-wrapper .blog:first-child {
+    margin-left: 0;
+}
+.blog-wrapper .blog .mark {
+    position: absolute;
+    right: 0;
+    top: 7px;
+}
+.btn-green {
+    width: 200px;
+    height: 40px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.4em;
+    display: inline;
+    background-color: #01ba1f;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    opacity: .9;
+}
+.btn-green:hover {
+    opacity: 1;
+}
