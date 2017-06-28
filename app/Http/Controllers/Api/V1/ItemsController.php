@@ -99,6 +99,8 @@ class ItemsController extends Controller
         ]);
         $product->category_id = $category->id;
         $product->title = $request->input('title');
+        $product->img = $request->input('img');
+        $product->url = $request->input('url');
         $product->save();
         
         $history = ProductHistory::firstOrCreate([

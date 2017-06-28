@@ -33,6 +33,7 @@ class ProductsController extends Controller
      */
     public function add(Request $request) {
         $domain = $request->input('domain');
+
         $category = Category::firstOrCreate(['category_name' => 'Book']);
         if (empty($domain)) {
             $domain = "amazon.com";
@@ -47,6 +48,8 @@ class ProductsController extends Controller
         ]);
         $product->category_id = $category->id;
         $product->title = $request->input('title');
+        $product->img = $request->input('img');
+        $product->url = $request->input('url');
         $product->save();
 
         $history = new ProductHistory;
