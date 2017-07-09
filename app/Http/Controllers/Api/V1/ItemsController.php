@@ -120,6 +120,7 @@ class ItemsController extends Controller
         ]);
         $item->caption = ($request->input('caption')) ? $request->input('caption') : "No camption";
         $item->product;
+        $item->histories = $item->product->histories;
 
         if ($history->save() && $item->save()) {
             return Response::json([
