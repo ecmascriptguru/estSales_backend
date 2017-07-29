@@ -14,7 +14,8 @@ let domains = [
     ];
 
 // let env = "dev";
-let env = "staging";
+// let env = "staging";
+let env = "production";
 let apiBaseUrl = null;
 if (env === "dev") {
     apiBaseUrl = "http://localhost:8000/api/v1/";
