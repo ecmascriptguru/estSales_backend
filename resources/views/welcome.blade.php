@@ -122,7 +122,7 @@
                                 <label for="new_category">Please select a category.</label>
                                 <select name="new_category" class="form-control" id="new_category">
                                     <option value="Book">Book</option>
-                                    <option value="eBook">eBook</option>
+                                    <option value="eBook" selected>eBook</option>
                                 </select>
                             </div>
                             <div class="form-group">

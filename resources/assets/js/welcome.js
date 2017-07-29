@@ -28,7 +28,7 @@ if (env === "dev") {
 let Calculator = (function() {
     let _domain = domains[0],
         _bsr = 1,
-        _category = "Book",
+        _category = "eBooks",
         _data = [],
         _initialSamplesAPIBaseUrl = apiBaseUrl + "get_initial_samples"
         _estimation = 0,
