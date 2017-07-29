@@ -80,8 +80,8 @@
                             <div class="form-group">
                                 <label for="category">Please select a category.</label>
                                 <select name="category" class="form-control" id="category">
-                                    <option value="Book" selected>Book</option>
-                                    <option value="eBook">eBook</option>
+                                    <option value="Books" selected>Books</option>
+                                    <option value="eBooks">eBooks</option>
                                 </select>
                             </div>
                             <div class="form-group">
