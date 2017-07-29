@@ -378,8 +378,8 @@ class InitialSamplesTableSeeder extends Seeder
         ];
         
         $domains = Domain::all();
-        $book = Category::where(['category_name' => "Book"])->first();
-        $eBook = Category::where(['category_name' => "eBook"])->first();
+        $book = Category::where(['category_name' => "Books"])->first();
+        $eBook = Category::where(['category_name' => "eBooks"])->first();
         foreach($domains as $domain) {
             $samples = $InitialData[$domain->name];
             foreach($samples as $sample) {
