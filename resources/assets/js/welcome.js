@@ -18,8 +18,10 @@ let env = "staging";
 let apiBaseUrl = null;
 if (env === "dev") {
     apiBaseUrl = "http://localhost:8000/api/v1/";
+} else if(env === "staging") {
+    apiBaseUrl = "http://54.210.141.168/api/v1/";
 } else {
-    apiBaseUrl = "http://34.207.216.247/api/v1/";
+    apiBaseUrl = "http://34.230.77.124/api/v1/";
 }
 
 let Calculator = (function() {
