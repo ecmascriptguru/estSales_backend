@@ -46,7 +46,7 @@ This api will be used in chrome extension as registration wizard.
 
 ```javascript
 var settings = {
-    "url": "http://localhost:8000/api/v1/register",
+    "url": "http://34.230.77.124/api/v1/register",
     "method": "POST",
     "data": {
         "name": "Test user",
@@ -89,7 +89,7 @@ This api will be used in chrome extension as Login wizard.
 
 ```javascript
 var settings = {
-    "url": "http://localhost:8000/api/v1/login",
+    "url": "http://34.230.77.124/api/v1/login",
     "method": "POST",
     "data": {
         "email": "test@test.com",
@@ -136,7 +136,7 @@ This api is used to get initial samples stored in database according to selected
 
 ```javascript
 var settings = {
-    "url": "http://localhost:8000/api/v1/get_initial_samples",
+    "url": "http://34.230.77.124/api/v1/get_initial_samples",
     "method": "POST",
     "data": {
         "domain" : "amazon.com",
@@ -201,7 +201,7 @@ This api will be called in chrome extension to get initial sample data to be use
 
 ```javascript
 var settings = {
-    "url": "http://localhost:8000/api/v1/iSamples",
+    "url": "http://34.230.77.124/api/v1/iSamples",
     "method": "POST",
     "data": {
         "token": "eyJ0eX..1NiJ9.eyJzdWIi...lJQeGMifQ.-kmnsi_tsr...RHoUYohY",
@@ -311,7 +311,7 @@ This api will be called in chrome extension to get a specific product with chang
 
 ```javascript
 var settings = {
-    "url": "http://localhost:8000/api/v1/items/get",
+    "url": "http://34.230.77.124/api/v1/items/get",
     "method": "POST",
     "data": {
         "id": 1,
@@ -369,7 +369,7 @@ This api will be called in chrome extension to track a new product by the author
 
 ```javascript
 var settings = {
-    "url": "http://localhost:8000/api/v1/items/new",
+    "url": "http://34.230.77.124/api/v1/items/new",
     "method": "POST",
     "data": {
         "token": "eyJ0eXAiOixxUzI1NiJ9.eyJzdWIiOjUsIml...QeGMifQ.-kmnsi...52lRHoUYohY",
@@ -414,7 +414,7 @@ $.ajax(settings).done(function (response) {
 
 ```javascript
 var settings = {
-    "url": "http://localhost:8000/api/v1/items/del",
+    "url": "http://34.230.77.124/api/v1/items/del",
     "method": "POST",
     "data" : {
         "token" : "eyJ0eXAiOixxUzI1NiJ9.eyJzdWIiOjUsIml...QeGMifQ.-kmnsi...52lRHoUYohY",
@@ -451,7 +451,7 @@ This api will be called in chrome extension to add a new product into a sample d
 
 ```javascript
 var settings = {
-    "url": "http://localhost:8000/api/v1/products/add",
+    "url": "http://34.230.77.124/api/v1/products/add",
     "method": "POST",
     "data": {
         "token": "eyJ0e..UzI1NiJ9.eyJzdWI...lJQeGMifQ.-kmnsi_ts..RHoUYohY",
@@ -499,7 +499,7 @@ This api will be called in landing page.
 
 ```javascript
 var settings = {
-    "url": "http://localhost:8000/api/v1/samples/add",
+    "url": "http://34.230.77.124/api/v1/samples/add",
     "method": "POST",
     "data": {
         "domain": "amazon.co.uk",
