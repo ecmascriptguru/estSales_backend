@@ -31,7 +31,7 @@ class AuthController extends Controller
      * This api will be used in chrome extension as registration wizard.
      */
     public function signup() {
-        $credentials = Input::only('name', 'email', 'password');
+        $credentials = Input::only('name', 'email', 'password', 'exp_at');
         $credentials['password'] = Hash::make($credentials['password']);
 
         try {
