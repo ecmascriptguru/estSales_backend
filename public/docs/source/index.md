@@ -52,7 +52,7 @@ var settings = {
         "name": "Test user",
         "email": "test@test.com",
         "password": "password",
-        "exp_at": "2017-10-29 08:25:58",
+        "exp_at": "10/29/2017 08:25:58",
     },
     "headers": {
         "accept": "application/json"
@@ -70,7 +70,7 @@ $.ajax(settings).done(function (response) {
         "name": "Test user",
         "email": "test@test.com",
         "membership": "t",
-        "exp_at": "2017-10-29 08:25:58",
+        "exp_at": "10/29/2017 08:25:58",
         "updated_at": "2017-05-30 08:25:58",
         "created_at": "2017-05-30 08:25:58",
         "id": 3
