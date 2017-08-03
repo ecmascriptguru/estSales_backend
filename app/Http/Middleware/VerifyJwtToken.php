@@ -20,8 +20,12 @@ class VerifyJwtToken
 
 		try {
 			$user = JWTAuth::toUser($token);
-			$request->merge(array('user' => $user));
-			return $next($request);
+            if ($user->membership == "e") {
+                return Response()->json(array('status'=>false, 'message' => 'Your membership was expired.', 'stateText' => "expired"));;
+            } else {
+                $request->merge(array('user' => $user));
+                return $next($request);
+            }
 		} catch(\Tymon\JWTAuth\Exceptions\JWTException $e) {
 			return Response()->json(array('status'=>false, 'message' => 'Your token was expired.'));
 		}

@@ -80,6 +80,28 @@ class ItemsController extends Controller
      */
     public function add(Request $request) {
         $user = $request->input('user');
+
+        $items = $user->items;
+        $trackingCount = sizeof($items);
+        $membership = $user->membership;
+        $exp_at = $user->exp_at;
+
+        if ($membership == "t" || $membership == "p") { // For pro membership
+            if ($trackingCount > 49) {
+                return Response::json([
+                    'status' => false,
+                    'message' => "Can't track more than 50 books"
+                ]);
+            }
+        } elseif ($membership == "l") {
+            if ($trackingCount > 9) {
+                return Response::json([
+                    'status' => false,
+                    'message' => "Lite membership can not track more than 10 books"
+                ]);
+            }
+        }
+
         $domain = $request->input('domain');
         $category = $request->input('category');
         if ($category == "") {
@@ -132,7 +154,7 @@ class ItemsController extends Controller
         } else {
             return Response::json([
                 'status' => false,
-                'msg' => "Error occured in SQL."
+                'message' => "Error occured in SQL."
             ]);
         }
     }
