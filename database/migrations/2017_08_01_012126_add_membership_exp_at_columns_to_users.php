@@ -14,8 +14,8 @@ class AddMembershipExpAtColumnsToUsers extends Migration
     public function up()
     {
         Schema::table('users', function(Blueprint $table) {
-            $table->string('membership')->default("t")->after('email');
-            $table->string('exp_at')->nullable()->after('membership');
+            $table->string('membership', 1)->default("t")->after('email');
+            $table->string('exp_at', 20)->nullable()->after('membership');
         });
     }
 
