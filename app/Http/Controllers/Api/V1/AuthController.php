@@ -74,4 +74,64 @@ class AuthController extends Controller
             array('status' => true, 'token' => $token, 'user' => $user)
         );
     }
+
+    /**
+     *  Renew membership tier
+     * @param {string} email
+     * @param {string} expiration_date
+     */
+    public function expire() {
+        $params = Input::only('email');
+        $user = User::where('email', $params['email'])->get();
+
+        if (sizeof($user) == 0) {
+            return Response::json(
+                array('status' => false, 'message' => "User Not found")
+            );
+        } else {
+            $user = $user[0];
+            $user->membership = "e";
+
+            if ($user->save()) {
+                return Response::json(
+                    array('status' => true, 'message' => "Success")
+                );
+            } else {
+                return Response::json(
+                    array('status' => false, 'message' => "SQL Error.")
+                );
+            }
+        }
+    }
+
+    /**
+     *  Renew membership tier
+     * @param {string} email
+     * @param {string} membership_tier
+     * @param {string} expiration_date
+     */
+    public function extend() {
+        $params = Input::only('email', 'membership_tier', 'expiration_date');
+        $user = User::where('email', $params['email'])->get();
+
+        if (sizeof($user) == 0) {
+            return Response::json(
+                array('status' => false, 'message' => "User Not found")
+            );
+        } else {
+            $user = $user[0];
+            $user->membership = $params['membership_tier'];
+            $user->exp_at = $params['expiration_date'];
+
+            if ($user->save()) {
+                return Response::json(
+                    array('status' => true, 'message' => "Success")
+                );
+            } else {
+                return Response::json(
+                    array('status' => false, 'message' => "SQL Error.")
+                );
+            }
+        }
+    }
 }
