@@ -83,7 +83,7 @@ class ItemsController extends Controller
 
         $items = $user->items;
         $trackingCount = sizeof($items);
-        $membership = $user->membership;
+        $membership = $user->membership_tier;
         $exp_at = $user->exp_at;
 
         if ($membership == "t" || $membership == "p") { // For pro membership
