@@ -20,7 +20,7 @@ class VerifyJwtToken
 
 		try {
 			$user = JWTAuth::toUser($token);
-            if ($user->membership == "e") {
+            if ($user->membership_tier == "e") {
                 return Response()->json(array('status'=>false, 'message' => 'Your membership was expired.', 'stateText' => "expired"));;
             } else {
                 $request->merge(array('user' => $user));
