@@ -11,7 +11,7 @@ return [
      |
      */
     'supportsCredentials' => false,
-    'allowedOrigins' => ['*'],//'chrome-extension://cnbpcbkjcbfmbpfaojbacmdkjcgopcnl', 'privatelabelmastery.com'],
+    'allowedOrigins' => ['chrome-extension://cnbpcbkjcbfmbpfaojbacmdkjcgopcnl', 'privatelabelmastery.com'],
     'allowedHeaders' => ['Content-Type', 'X-Requested-With'],
     'allowedMethods' => ['POST'],
     'exposedHeaders' => [],
