@@ -31,7 +31,7 @@ class AuthController extends Controller
      * This api will be used in chrome extension as registration wizard.
      */
     public function signup() {
-        $credentials = Input::only('name', 'email', 'password', 'exp_at');
+        $credentials = Input::only('name', 'email', 'password', 'expiration_date');
         $credentials['password'] = Hash::make($credentials['password']);
 
         try {
@@ -78,10 +78,11 @@ class AuthController extends Controller
     /**
      *  Renew membership tier
      * @param {string} email
+     * @param {string} membership_tier
      * @param {string} expiration_date
      */
-    public function expire() {
-        $params = Input::only('email');
+    public function extend() {
+        $params = Input::only('email', 'membership_tier', 'expiration_date');
         $user = User::where('email', $params['email'])->get();
 
         if (sizeof($user) == 0) {
@@ -90,7 +91,8 @@ class AuthController extends Controller
             );
         } else {
             $user = $user[0];
-            $user->membership = "e";
+            $user->membership_tier = $params['membership_tier'];
+            $user->expiration_date = $params['expiration_date'];
 
             if ($user->save()) {
                 return Response::json(
@@ -107,11 +109,10 @@ class AuthController extends Controller
     /**
      *  Renew membership tier
      * @param {string} email
-     * @param {string} membership_tier
      * @param {string} expiration_date
      */
-    public function extend() {
-        $params = Input::only('email', 'membership_tier', 'expiration_date');
+    public function expire() {
+        $params = Input::only('email');
         $user = User::where('email', $params['email'])->get();
 
         if (sizeof($user) == 0) {
@@ -120,8 +121,7 @@ class AuthController extends Controller
             );
         } else {
             $user = $user[0];
-            $user->membership = $params['membership_tier'];
-            $user->exp_at = $params['expiration_date'];
+            $user->membership_tier = "e";
 
             if ($user->save()) {
                 return Response::json(
