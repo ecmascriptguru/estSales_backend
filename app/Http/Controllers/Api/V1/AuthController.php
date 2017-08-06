@@ -87,8 +87,8 @@ class AuthController extends Controller
      */
     public function extend() {
         $params = Input::only('email', 'membership_tier', 'expiration_date');
-        if (strlen($credentials['membership_tier']) > 1) {
-            $credentials['membership_tier'] = substr($credentials['membership_tier'], 0, 1);
+        if (strlen($params['membership_tier']) > 1) {
+            $params['membership_tier'] = substr($params['membership_tier'], 0, 1);
         }
         $user = User::where('email', $params['email'])->get();
 
