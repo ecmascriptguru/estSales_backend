@@ -90,14 +90,14 @@ class ItemsController extends Controller
             if ($trackingCount > 49) {
                 return Response::json([
                     'status' => false,
-                    'message' => "Can't track more than 50 books"
+                    'message' => "Your current subscription only allows for tracking up to 50 books at a time."
                 ]);
             }
         } elseif ($membership == "l") {
             if ($trackingCount > 9) {
                 return Response::json([
                     'status' => false,
-                    'message' => "Lite membership can not track more than 10 books"
+                    'message' => "Your current subscription only allows for tracking up to 10 books at a time."
                 ]);
             }
         }
