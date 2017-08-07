@@ -86,14 +86,14 @@ class ItemsController extends Controller
         $membership = $user->membership_tier;
         $exp_at = $user->exp_at;
 
-        if ($membership == "t" || $membership == "p") { // For pro membership
+        if ($membership == "p") { // For pro membership
             if ($trackingCount > 49) {
                 return Response::json([
                     'status' => false,
                     'message' => "Your current subscription only allows for tracking up to 50 books at a time."
                 ]);
             }
-        } elseif ($membership == "l") {
+        } elseif ($membership == "t" || $membership == "l") {
             if ($trackingCount > 9) {
                 return Response::json([
                     'status' => false,
