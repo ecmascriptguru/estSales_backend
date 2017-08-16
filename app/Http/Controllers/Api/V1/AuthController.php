@@ -88,11 +88,11 @@ class AuthController extends Controller
         
         if (sizeof($user) > 0) {
             return Response::json(
-                array('ststus' => true, 'user' => $user[0])
+                array('status' => true, 'user' => $user[0])
             );
         } else {
             return Response::json(
-                array('ststus' => false, 'msg' => "User not found")
+                array('status' => false, 'msg' => "User not found")
             );
         }
     }
