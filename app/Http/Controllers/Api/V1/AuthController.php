@@ -80,6 +80,24 @@ class AuthController extends Controller
     }
 
     /**
+     *
+     */
+    public function check() {
+        $credentials = Input::only("email");
+        $user = User::where(["email" => $credentials["email"]])->get();
+        
+        if (sizeof($user) > 0) {
+            return Response::json(
+                array('ststus' => true, 'user' => $user[0])
+            );
+        } else {
+            return Response::json(
+                array('ststus' => false, 'msg' => "User not found")
+            );
+        }
+    }
+
+    /**
      *  Renew membership tier
      * @param {string} email
      * @param {string} membership_tier
