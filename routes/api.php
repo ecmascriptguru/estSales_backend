@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/v1/login', 'Api\V1\AuthController@signin')->name('api_login');
 
 Route::post('/v1/register', 'Api\V1\AuthController@signup')->name('api_register');
+Route::post('/v1/reset_password', 'Api\V1\AuthController@reset_password')->name('api_reset_password');
 Route::post('/v1/membership/extend', 'Api\V1\AuthController@extend')->name('api_subs_extend');
 Route::post('/v1/membership/expire', 'Api\V1\AuthController@expire')->name('api_subs_expire');
 Route::post('/v1/membership/check', 'Api\V1\AuthController@check')->name('api_subs_check');

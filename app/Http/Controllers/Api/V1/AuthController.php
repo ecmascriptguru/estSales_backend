@@ -79,6 +79,29 @@ class AuthController extends Controller
         );
     }
 
+    public function reset_password() {
+        $credentials = Input::only("email", "password");
+        $user = User::where(["email" => $credentials["email"]])->get();
+        
+        if (sizeof($user) > 0) {
+            $user[0]->password = Hash::make($credentials['password']);
+            if ($user[0]->save()) {
+                return Response::json(
+                    array('status' => true, 'user' => $user[0])
+                );
+            } else {
+                return Response::json(
+                    array('status' => true, 'msg' => 'Something went wrong.')
+                );
+            }
+            
+        } else {
+            return Response::json(
+                array('status' => false, 'msg' => "User not found")
+            );
+        }
+    }
+
     /**
      *
      */
