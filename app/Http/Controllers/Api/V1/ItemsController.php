@@ -50,6 +50,20 @@ class ItemsController extends Controller
     public function get(Request $request) {
         $productID = $request->input('id');
         $user = $request->input('user');
+        $history = ProductHistory::firstOrNew([
+            'product_id' => $productID,
+            'pages' => $request->input('pages'),
+            'bsr' => $request->input('bsr'),
+            'currency' => $request->input('currency'),
+            'price' => $request->input('price'),
+            'est' => $request->input('est'),
+            'monthly_rev' => $request->input('monthly_rev'),
+            'reviews' => $request->input('reviews'),
+        ]);
+
+        if (is_null($history->id)) {
+            $history->save();
+        }
         $item = Item::where([
             'product_id' => $productID,
             'tracked_by' => $user->id
