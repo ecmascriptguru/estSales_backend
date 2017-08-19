@@ -63,8 +63,6 @@ class ItemsController extends Controller
                 'reviews' => $request->input('reviews'),
             ]);
 
-            var_dump($history->id);exit;
-
             if (is_null($history->id)) {
                 $history->save();
             }
