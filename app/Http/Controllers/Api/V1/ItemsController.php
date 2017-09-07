@@ -50,31 +50,32 @@ class ItemsController extends Controller
     public function get(Request $request) {
         $productID = $request->input('id');
         $user = $request->input('user');
+        $tempProduct = Product::find($productID);
 
-        if (!is_null($request->input('bsr'))) {
-            $history = ProductHistory::firstOrNew([
-                'product_id' => $productID,
-                'pages' => $request->input('pages'),
-                'bsr' => $request->input('bsr'),
-                'currency' => $request->input('currency'),
-                'price' => $request->input('price'),
-                'est' => $request->input('est'),
-                'monthly_rev' => $request->input('monthly_rev'),
-                'reviews' => $request->input('reviews'),
-            ]);
+        if (!is_null($request->input('bsr')) && $tempProduct) {
+            
+            $lastHistory = $tempProduct->histories->last();
 
-            if (is_null($history->id)) {
-                $history->save();
+            if ($lastHistory->bsr != $request->input('bsr') ||
+                $lastHistory->price != $request->input('price') ||
+                $lastHistory->est != $request->input('est')) {
+
+                    $history = ProductHistory::create([
+                        'product_id' => $productID,
+                        'pages' => $request->input('pages'),
+                        'bsr' => $request->input('bsr'),
+                        'currency' => $request->input('currency'),
+                        'price' => $request->input('price'),
+                        'est' => $request->input('est'),
+                        'monthly_rev' => $request->input('monthly_rev'),
+                        'reviews' => $request->input('reviews'),
+                    ]);
             }
         }
-        
-        $item = Item::where([
-            'product_id' => $productID,
-            'tracked_by' => $user->id
-        ])->first();
 
-        if ($item) {
-            $product = $item->product;
+        $product = Product::find($productID);
+
+        if ($product) {
             $histories = $product->histories;
 
             return Response::json([
