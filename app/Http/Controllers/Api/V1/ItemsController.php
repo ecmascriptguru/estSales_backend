@@ -144,16 +144,24 @@ class ItemsController extends Controller
         $product->url = $request->input('url');
         $product->save();
         
-        $history = ProductHistory::firstOrCreate([
-            'product_id' => $product->id,
-            'bsr' => $request->input('bsr'),
-            'currency' => $request->input('currency'),
-            'price' => $request->input('price'),
-            'est' => $request->input('est'),
-            'pages' => $request->input('pages'),
-            'monthly_rev' => $request->input('monthly_rev'),
-            'reviews' => $request->input('reviews'),
-        ]);
+        $lastHistory = $product->histories->last();
+        $history = $lastHistory;
+
+        if (!$lastHistory || 
+            $lastHistory->bsr != $request->input('bsr') ||
+            $lastHistory->price != $request->input('price') ||
+            $lastHistory->est != $request->input('est')) {
+            $history = ProductHistory::create([
+                'product_id' => $product->id,
+                'bsr' => $request->input('bsr'),
+                'currency' => $request->input('currency'),
+                'price' => $request->input('price'),
+                'est' => $request->input('est'),
+                'pages' => $request->input('pages'),
+                'monthly_rev' => $request->input('monthly_rev'),
+                'reviews' => $request->input('reviews'),
+            ]);
+        }
 
         $item = Item::firstOrNew([
             'product_id' => $product->id,
@@ -167,8 +175,8 @@ class ItemsController extends Controller
                 'status' => true,
                 'id' => $item->id,
                 'item' => $item,
-                'product' => $product,
-                'histories' => $product->histories
+                'product' => $item->product,
+                'histories' => $item->product->histories
             ]);
         } else {
             return Response::json([
